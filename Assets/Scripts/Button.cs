@@ -7,13 +7,16 @@ public class Button : MonoBehaviour {
 	public bool IsSelected;
 	Animator animator;
 
+	public IButtonAction action;
+
 	// Use this for initialization
 	void Start () {
 		animator = transform.GetComponent<Animator>();
-		animator.StartPlayback();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (IsSelected != animator.GetBool("Selected"))
+			animator.SetBool("Selected", IsSelected);
 	}
 }

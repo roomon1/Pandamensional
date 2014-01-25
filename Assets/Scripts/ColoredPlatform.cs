@@ -4,6 +4,7 @@ using System.Collections;
 [ExecuteInEditMode]
 public class ColoredPlatform : MonoBehaviour
 {
+	private static float MIN_DIMENSION = 1f;
 	private static int SPRITES_FOR_SIDE = 3;
 	private static int SPRITES_FOR_PLATFORM = SPRITES_FOR_SIDE * SPRITES_FOR_SIDE;
 
@@ -48,6 +49,8 @@ public class ColoredPlatform : MonoBehaviour
 		    m_CurrentWidth != m_Width ||
 		    m_CurrentHeight != m_Height)
 		{
+			m_Width  = Mathf.Max(m_Width,  MIN_DIMENSION);
+			m_Height = Mathf.Max(m_Height, MIN_DIMENSION);
 			Restart();
 			m_ForceRestart = false;
 		}

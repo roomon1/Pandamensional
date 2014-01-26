@@ -44,14 +44,17 @@ public class PandaControl : MonoBehaviour {
 				facing = false;
 			}
 
-			if (!Physics2D.Raycast(transform.position, facing ? Vector2.right : -Vector2.right, .75f, groundLayer)) {
+			if (!Physics2D.Raycast(transform.position + Vector3.up, facing ? Vector2.right : -Vector2.right, .75f, groundLayer) &&
+			    !Physics2D.Raycast(transform.position, facing ? Vector2.right : -Vector2.right, .75f, groundLayer) &&
+			    !Physics2D.Raycast(transform.position - Vector3.up, facing ? Vector2.right : -Vector2.right, .75f, groundLayer)) {
 				r.velocity = new Vector2(movement * moveSpeed, r.velocity.y);
 			}
 			else {
 				r.velocity = new Vector2(0, r.velocity.y);
 			}
 
-			if (Physics2D.Raycast(transform.position, -Vector2.up, 1.1f, groundLayer))
+			if (Physics2D.Raycast(transform.position + Vector3.right * .5f, -Vector2.up, 1.1f, groundLayer) ||
+			    Physics2D.Raycast(transform.position + Vector3.left * .5f, -Vector2.up, 1.1f, groundLayer))
 				isGrounded = true;
 			else 
 				isGrounded = false;

@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21200000}
   - 58: {fileID: 5800000}
   m_Layer: 9
-  m_Name: Collectable
+  m_Name: Exit
   m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

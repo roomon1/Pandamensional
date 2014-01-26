@@ -35,11 +35,13 @@ public class Platform : MonoBehaviour
 		
 		m_Collider = GetComponent<BoxCollider2D>();
 
-		m_Unlocked = !Application.isPlaying;
+		SetUnlocked(m_Unlocked || m_Color == eColor.White);
+		SetUnlocked(m_Unlocked || !Application.isPlaying);
 	}
 	
 	void Start()
 	{
+		SetActiveColor(eColor.White);
 		Restart();
 	}
 	
@@ -81,25 +83,17 @@ public class Platform : MonoBehaviour
 		if (m_Color == eColor.White ||
 		    !m_Unlocked ||
 		    m_Color == newColor)
-		{
-			SetColor (newColor);
-			m_Collider.enabled = true;
-		}
-		else
-		{
-			m_Collider.enabled = false;
-		}
+			SetColor(m_Color);
+		m_Collider.enabled = m_Unlocked;
 	}
 
 	public void SetColor(eColor color)
 	{
 		if (!m_Unlocked)
-			color = eColor.White;
+			color = eColor.Black;
 
 		int ind = 0;
-		for (ind = 0; ind < PlatformColor.eColorList.Length; ++ind)
-			if (PlatformColor.eColorList[ind] == color)
-				break;
+		for (ind = 0; ind < PlatformColor.eColorList.Length && PlatformColor.eColorList[ind] != color; ++ind);
 		
 		int mask = LayerMask.NameToLayer(PlatformColor.NameList[ind]);
 

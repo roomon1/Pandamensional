@@ -2,16 +2,17 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\PandaColor.cs">
     <Files>
-      <File FileName="Assets\Scripts\Player\PandaColor.cs" Line="143" Column="1" />
-      <File FileName="Assets\Scripts\Player\PandaColor.cs" Line="36" Column="24" />
-      <File FileName="Assets\Scripts\LevelManager.cs" Line="83" Column="1" />
-      <File FileName="Assets\Scripts\Platform.cs" Line="83" Column="1" />
+      <File FileName="Assets\Scripts\Player\PandaControl.cs" Line="15" Column="24" />
+      <File FileName="Assets\Scripts\Platform.cs" Line="114" Column="1" />
+      <File FileName="Assets\Scripts\CameraBehaviour.cs" Line="50" Column="47" />
+      <File FileName="Assets\Scripts\LevelManager.cs" Line="97" Column="1" />
+      <File FileName="Assets\Scripts\Player\PandaSpawner.cs" Line="28" Column="36" />
+      <File FileName="Assets\Scripts\PlatformColor.cs" Line="18" Column="52" />
+      <File FileName="Assets\Scripts\Player\PandaColor.cs" Line="145" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="C:\Users\student\Desktop\Pandamensional\Assets\Scripts\Player\PandaColor.cs" line="143" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

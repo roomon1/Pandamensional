@@ -2,11 +2,14 @@
 using System.Collections;
 
 public class PandaSpawner : MonoBehaviour {
+
 	const int MAX_LIVES = 3;
 	public int lives;
 
 	GameObject levelRespawn = null;
 	Vector3 lastCheckpoint;
+
+	LevelManager levelManager;
 
 	public void Start()
 	{
@@ -23,6 +26,8 @@ public class PandaSpawner : MonoBehaviour {
 		lastCheckpoint = levelRespawn.transform.position;
 		transform.position = lastCheckpoint;
 		lives = MAX_LIVES;
+
+		levelManager = GameObject.FindGameObjectWithTag ("Level").GetComponent<LevelManager> ();
 	}
 	
 	public void SetRespawn(Vector3 respawn) {
@@ -41,6 +46,7 @@ public class PandaSpawner : MonoBehaviour {
 			lastCheckpoint = levelRespawn.transform.position;
 			transform.position = lastCheckpoint;
 			lives = MAX_LIVES;
+			levelManager.Reset();
 		}
 	}
 

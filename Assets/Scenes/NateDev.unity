@@ -325,6 +325,10 @@ Prefab:
       propertyPath: pandaSpawner
       value: 
       objectReference: {fileID: 2127115903}
+    - target: {fileID: 100002, guid: a136bb1a766e389409aa620fdb29d751, type: 2}
+      propertyPath: m_TagString
+      value: Level
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a136bb1a766e389409aa620fdb29d751, type: 2}
   m_RootGameObject: {fileID: 2047595500}
@@ -1548,7 +1552,7 @@ GameObject:
   - 114: {fileID: 2047595502}
   m_Layer: 0
   m_Name: Level
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

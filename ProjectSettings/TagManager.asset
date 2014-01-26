@@ -5,6 +5,10 @@ TagManager:
   tags:
   - DeathTrigger
   - Ground
+  - Level
+  - RedTrigger
+  - YellowTrigger
+  - BlueTrigger
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

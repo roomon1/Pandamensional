@@ -75,11 +75,8 @@ public class ColoredPlatform : MonoBehaviour
 				++r;
 				c -= SPRITES_FOR_SIDE;
 			}
-			if (m_ActiveSprites[r, c] == null)
-			{
-				m_ActiveSprites[r, c] = m_UsedSprites[i].gameObject;
-				m_ActiveSprites[r, c].transform.parent = gameObject.transform;
-			}
+			m_ActiveSprites[r, c] = m_UsedSprites[i].gameObject;
+			m_ActiveSprites[r, c].transform.parent = gameObject.transform;
 		}
 		
 		ArrangeSprites();

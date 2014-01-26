@@ -12,23 +12,21 @@ public class PandaControl : MonoBehaviour {
 	private bool isGrounded = true;
 	private int groundLayer;
 
-	private Vector3 currentRespawn;
-
 	private Rigidbody2D r;
 	private bool facing = true;
+
+	private PandaSpawner spawner;
 
 	void Awake () {
 		r = rigidbody2D;
 		groundLayer = (1 << LayerMask.NameToLayer ("White")) + (1 << LayerMask.NameToLayer ("Red")) + (1 << LayerMask.NameToLayer ("Blue")) + (1 << LayerMask.NameToLayer ("Yellow"));
 		facing = transform.localScale.x == -1 ? true : false;
+		spawner = gameObject.GetComponent<PandaSpawner>();
 	}
 
 	void Start () {
 		StartCoroutine("MovementInput");	
 		StartCoroutine("PlayerAttacked");
-
-		currentRespawn = GameObject.Find("Spawn").transform.position;
-		transform.position = currentRespawn;
 	}
 
 	IEnumerator MovementInput() {
@@ -57,6 +55,9 @@ public class PandaControl : MonoBehaviour {
 				isGrounded = true;
 			else 
 				isGrounded = false;
+
+			if (Input.GetButtonDown("Jump"))
+				Debug.Log("Grounded = " + isGrounded.ToString());
 
 			if (Input.GetButtonDown("Jump") && isGrounded) {
 				r.velocity = new Vector2(r.velocity.x, jumpSpeed);
@@ -94,15 +95,11 @@ public class PandaControl : MonoBehaviour {
 		Input.ResetInputAxes();
 	}
 
-	void SetRespawn(Vector3 respawn) {
-		currentRespawn = respawn;
-	}
-
 	IEnumerator DoRespawn() {
 		r.velocity = Vector2.zero;
 		//Play death animation, disable behaviours
 		yield return new WaitForSeconds (1f);
-		transform.position = currentRespawn;
+		spawner.Respawn();
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
@@ -111,7 +108,7 @@ public class PandaControl : MonoBehaviour {
 		}
 
 		if (coll.tag == "Respawn") {
-			SetRespawn(coll.transform.position);
+			spawner.SetRespawn(coll.transform.position);
 		}
 	}
 }

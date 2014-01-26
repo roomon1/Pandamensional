@@ -4,6 +4,9 @@
 TagManager:
   tags:
   - DeathTrigger
+  - RedTrigger
+  - BlueTrigger
+  - YellowTrigger
   - Ground
   - 
   Builtin Layer 0: Default
@@ -14,17 +17,17 @@ TagManager:
   Builtin Layer 5: 
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: Actors
-  User Layer 9: Objects
-  User Layer 10: Effects (ignore)
-  User Layer 11: White
-  User Layer 12: Red
-  User Layer 13: Blue
-  User Layer 14: Yellow
-  User Layer 15: Red BG
-  User Layer 16: Blue BG
-  User Layer 17: Yellow BG
-  User Layer 18: White BG
+  User Layer 8: Ground
+  User Layer 9: Actors
+  User Layer 10: 
+  User Layer 11: 
+  User Layer 12: 
+  User Layer 13: 
+  User Layer 14: 
+  User Layer 15: 
+  User Layer 16: 
+  User Layer 17: 
+  User Layer 18: 
   User Layer 19: 
   User Layer 20: 
   User Layer 21: 

@@ -114,13 +114,13 @@ public class PandaColor : MonoBehaviour {
 			break;
 		case eColor.Red:
 			if (IsRedUnlocked)
-				Debug.Log("Unlocked blue when it was already unlocked");
+				Debug.Log("Unlocked red when it was already unlocked");
 			else
 				IsRedUnlocked = true;
 			break;
 		case eColor.Yellow:
 			if (IsYellowUnlocked)
-				Debug.Log("Unlocked blue when it was already unlocked");
+				Debug.Log("Unlocked yellow when it was already unlocked");
 			else
 				IsYellowUnlocked = true;
 			break;

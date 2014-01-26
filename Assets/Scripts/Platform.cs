@@ -81,10 +81,9 @@ public class Platform : MonoBehaviour
 	public void SetActiveColor(eColor newColor)
 	{
 		if (m_Color == eColor.White ||
-		    !m_Unlocked ||
 		    m_Color == newColor)
-			SetColor(m_Color);
-		m_Collider.enabled = m_Unlocked;
+			SetColor(newColor);
+		m_Collider.enabled = m_Unlocked && (m_Color == eColor.White || m_Color == newColor);
 	}
 
 	public void SetColor(eColor color)

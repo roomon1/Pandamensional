@@ -50,9 +50,9 @@ public class CameraBehaviour : MonoBehaviour {
 		secondCamera.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(secondColour)));
 		thirdCamera.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(thirdColour)));
 		
-		//foregroundCamera_BG.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(activeColour) + " BG"));
-		//secondCamera_BG.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(secondColour) + " BG"));
-		//thirdCamera_BG.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(thirdColour) + " BG"));
+		foregroundCamera_BG.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(activeColour) + " BG"));
+		secondCamera_BG.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(secondColour) + " BG"));
+		thirdCamera_BG.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(thirdColour) + " BG"));
 	}
 	
 	// Update is called once per frame

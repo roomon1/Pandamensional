@@ -2,17 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public enum eColor
+{
+	White,
+	Red,
+	Yellow,
+	Blue,
+	Black
+}
+
 public class PlatformColor
 {
-	public enum eColor
-	{
-		White,
-		Red,
-		Yellow,
-		Blue,
-		Black
-	}
-
 	public static eColor[] eColorList = {eColor.White, eColor.Red, eColor.Yellow, eColor.Blue, eColor.Black};
 	public static Color[] ColorList = {Color.white, Color.red, Color.yellow, Color.blue, Color.black};
 	public static string[] NameList = {"White", "Red", "Yellow", "Blue", "Black"};

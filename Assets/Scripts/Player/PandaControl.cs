@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PandaControl : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class PandaControl : MonoBehaviour {
 
 	private bool isGrounded = true;
 	private int groundLayer;
+	private List<int> groundedLayers;
 
 	private Rigidbody2D r;
 	private bool facing = true;
@@ -28,6 +30,39 @@ public class PandaControl : MonoBehaviour {
 	void Start () {
 		StartCoroutine("MovementInput");	
 		StartCoroutine("PlayerAttacked");
+	}
+
+	void Update() {
+		float dist = 1.5f;
+		bool movingUp = rigidbody2D.velocity.y > 0;
+		if (!movingUp)
+			return;
+		RaycastHit2D hit1 = Physics2D.Raycast(transform.position + 0.7f * Vector3.right, Vector2.up, dist, groundLayer);
+		RaycastHit2D hit2 = Physics2D.Raycast(transform.position,                        Vector2.up, dist, groundLayer);
+		RaycastHit2D hit3 = Physics2D.Raycast(transform.position + 0.7f * Vector3.left,  Vector2.up, dist, groundLayer);
+
+		RaycastHit2D hit;
+		if (hit1)
+			hit = hit1;
+		else if (hit2)
+			hit = hit2;
+		else if (hit3)
+			hit = hit3;
+		else
+			return;
+
+		if (hit)
+		{
+			Debug.Log(movingUp);
+			hit.collider.enabled = !movingUp;
+			StartCoroutine("RestoreCollider", hit.collider);
+		}
+	}
+
+	IEnumerator RestoreCollider(Collider2D col)
+	{
+		yield return new WaitForSeconds(0.15f);
+		col.enabled = true;
 	}
 
 	IEnumerator MovementInput() {

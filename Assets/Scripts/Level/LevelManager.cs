@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour {
 	public GameObject LevelRespawn;
-	public PandaSpawner pandaSpawner;
+	PandaSpawner pandaSpawner;
 
 	private Platform[] m_WhitePlatforms;
 	private Platform[] m_RedPlatforms;

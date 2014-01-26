@@ -36,9 +36,7 @@ public class PandaControl : MonoBehaviour {
 
 		while (true) {
 			movement = Input.GetAxis("Horizontal");
-
-			r.velocity = new Vector2(movement * moveSpeed, r.velocity.y);
-
+			
 			if (movement > 0 && facing == false) {
 				transform.localScale = new Vector3(-1,1,1);
 				facing = true;
@@ -46,6 +44,13 @@ public class PandaControl : MonoBehaviour {
 			else if (movement < 0 && facing == true) {
 				transform.localScale = Vector3.one;
 				facing = false;
+			}
+
+			if (!Physics2D.Raycast(transform.position, facing ? Vector2.right : -Vector2.right, .75f, groundLayer)) {
+				r.velocity = new Vector2(movement * moveSpeed, r.velocity.y);
+			}
+			else {
+				r.velocity = new Vector2(0, r.velocity.y);
 			}
 
 			if (Physics2D.Raycast(transform.position, -Vector2.up, 1.1f, groundLayer))

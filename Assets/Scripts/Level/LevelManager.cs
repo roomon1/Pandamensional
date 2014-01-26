@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour {
 	public GameObject LevelRespawn;
-	public PandaSpawner pandaSpawner;
+	PandaSpawner pandaSpawner;
 
 	private Platform[] m_WhitePlatforms;
 	private Platform[] m_RedPlatforms;
@@ -66,11 +67,6 @@ public class LevelManager : MonoBehaviour {
 			}
 		}
 	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	}
 
 	public void SetColor(eColor newColor, bool redUnlocked, bool blueUnlocked, bool yellowUnlocked)
 	{
@@ -92,5 +88,14 @@ public class LevelManager : MonoBehaviour {
 			m_YellowPlatforms[i].SetUnlocked(yellowUnlocked);
 			m_YellowPlatforms[i].SetActiveColor(newColor);
 		}
+	}
+
+	public void Reset()
+	{
+		ColorManager colorMan = gameObject.GetComponent<ColorManager>();
+		CollectibleManager collectibleMan = gameObject.GetComponent<CollectibleManager>();
+
+		colorMan.Reset();
+		collectibleMan.Reset();
 	}
 }

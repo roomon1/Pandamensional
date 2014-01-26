@@ -49,17 +49,19 @@ public class PandaColor : MonoBehaviour {
 		if (tag.Equals("RedTrigger"))
 		{
 			UnlockColor (eColor.Red);
+			other.gameObject.SetActive(false);
 		}
 		if (tag.Equals("BlueTrigger"))
 		{
 			UnlockColor (eColor.Blue);
+			other.gameObject.SetActive(false);
 		}
 		if (tag.Equals("YellowTrigger"))
 		{
 			UnlockColor (eColor.Yellow);
+			other.gameObject.SetActive(false);
 		}
 
-		other.gameObject.SetActive(false);
 	}
 
 	public void UnlockColor(eColor newColor)

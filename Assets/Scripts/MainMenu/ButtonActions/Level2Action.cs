@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Level1Action : MonoBehaviour {
+public class Level2Action : ButtonAction {
 
 	// Use this for initialization
 	void Start () {
@@ -11,5 +11,10 @@ public class Level1Action : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public override void Activate ()
+	{
+		Application.LoadLevel("Level2");
 	}
 }

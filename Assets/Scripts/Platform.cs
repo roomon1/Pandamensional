@@ -7,7 +7,7 @@ public class Platform : MonoBehaviour
 {
 	private static float MIN_DIMENSION = 1f;
 	
-	public PlatformColor.eColor m_Color = PlatformColor.eColor.White;
+	public eColor m_Color = eColor.White;
 	
 	public float m_Width  = MIN_DIMENSION;
 	public float m_Height = MIN_DIMENSION;
@@ -67,7 +67,7 @@ public class Platform : MonoBehaviour
 		SetColor(m_Color);
 	}
 	
-	private void SetColor(PlatformColor.eColor color)
+	private void SetColor(eColor color)
 	{
 		int ind = 0;
 		for (ind = 0; ind < PlatformColor.eColorList.Length; ++ind)

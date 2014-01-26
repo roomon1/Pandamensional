@@ -1,11 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\PandaControl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Platform.cs">
     <Files>
-      <File FileName="Assets\Scripts\Platform.cs" Line="10" Column="9" />
-      <File FileName="Assets\Scripts\PlatformColor.cs" Line="28" Column="2" />
-      <File FileName="Assets\Scripts\Player\PandaControl.cs" Line="55" Column="52" />
-      <File FileName="Assets\Scripts\Player\PandaSpawner.cs" Line="13" Column="1" />
+      <File FileName="Assets\Scripts\Platform.cs" Line="74" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

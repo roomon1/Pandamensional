@@ -9,6 +9,8 @@ public class PandaColor : MonoBehaviour {
 
 	public eColor currentColor;
 
+	private LevelManager m_Manager;
+
 	//TODO: Put in public LevelColor here
 
 	// Use this for initialization
@@ -17,6 +19,8 @@ public class PandaColor : MonoBehaviour {
 		IsBlueUnlocked = false;
 		IsYellowUnlocked = false;
 		IsRedUnlocked = false;
+
+		m_Manager = GameObject.FindGameObjectWithTag("Level").GetComponent<LevelManager>();
 	}
 	
 	// Update is called once per frame
@@ -134,7 +138,7 @@ public class PandaColor : MonoBehaviour {
 
 		currentColor = newColor;
 		
-		//TODO: Change Level Color here
+		m_Manager.SetColor(newColor, IsRedUnlocked, IsBlueUnlocked, IsYellowUnlocked);
 		
 		//TODO: When sprites are added, change this region to use sprites
 		#region change player color

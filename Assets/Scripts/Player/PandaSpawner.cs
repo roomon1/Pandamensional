@@ -5,12 +5,12 @@ public class PandaSpawner : MonoBehaviour {
 	const int MAX_LIVES = 3;
 	public int lives;
 
-	GameObject levelRespawn;
+	Vector3 levelRespawn;
 	Vector3 lastCheckpoint;
 
 	public void Start()
 	{
-		lastCheckpoint = levelRespawn.transform.position;
+		lastCheckpoint = levelRespawn;
 		transform.position = lastCheckpoint;
 		lives = MAX_LIVES;
 	}
@@ -28,7 +28,7 @@ public class PandaSpawner : MonoBehaviour {
 		}
 		else
 		{
-			lastCheckpoint = levelRespawn.transform.position;
+			lastCheckpoint = levelRespawn;
 			transform.position = lastCheckpoint;
 			lives = MAX_LIVES;
 		}
@@ -36,6 +36,6 @@ public class PandaSpawner : MonoBehaviour {
 
 	public void SetLevelSpawn(GameObject newLevelSpawn)
 	{
-		levelRespawn = newLevelSpawn;
+		levelRespawn = newLevelSpawn.transform.position;
 	}
 }

@@ -30,12 +30,11 @@ public class Platform : MonoBehaviour
 	void Awake()
 	{
 		Transform[] wallPrefabs = {m_RedPlatform, m_YellowPlatform, m_BluePlatform, m_WhitePlatform, m_BlackPlatform};
-		string[] wallColors = {"Red", "Yellow", "Blue", "White", "Black"};
 		for (int i = 0; i < wallPrefabs.Length; ++i)
 		{
 			if (wallPrefabs[i] == null)
 			{
-				Debug.LogError(string.Format("{0} Platform prefab is not set for platform at {1}", wallColors[i], transform.position));
+				Debug.LogError(string.Format("Platform prefab {0} is not set for platform at {1}", i, transform.position));
 				return;
 			}
 		}
@@ -49,17 +48,23 @@ public class Platform : MonoBehaviour
 		}
 
 		for (int i = 0; i < m_Platforms.Length; ++i)
+		{
 			m_Platforms[i].SetSize(m_CurrentHeight, m_CurrentWidth);
+		}
 
 		m_Collider = GetComponent<BoxCollider2D>();
 	}
 
 	void Start()
 	{
-		Color[] colors = PlatformColor.AllColors();
 		for (int i = 0; i < m_Platforms.Length; ++i)
 		{
-			m_Platforms[i].SetColor(colors [i]);
+			m_Platforms[i].SetColor(PlatformColor.ColorList[i]);
+			m_Platforms[i].transform.name = PlatformColor.NameList[i];
+			if (PlatformColor.eColorList[i] == m_Color)
+				m_Platforms[i].transform.localPosition = new Vector3(0f, 0f, 0f);
+			else
+				m_Platforms[i].transform.localPosition = new Vector3(0f, 0f, 1f);
 		}
 		
 		Restart();

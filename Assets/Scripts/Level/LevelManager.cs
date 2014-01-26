@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour {
 	public GameObject LevelRespawn;
@@ -63,11 +64,6 @@ public class LevelManager : MonoBehaviour {
 				break;
 			}
 		}
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
 	}
 
 	public void SetColor(eColor newColor, bool redUnlocked, bool blueUnlocked, bool yellowUnlocked)

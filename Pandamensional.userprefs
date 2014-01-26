@@ -1,8 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\test\Assets\Scripts\Player\PandaColor.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Level\CollectibleManager.cs">
     <Files>
-      <File FileName="..\test\Assets\Scripts\Player\PandaColor.cs" Line="23" Column="1" />
+      <File FileName="Assets\Scripts\Level\CollectibleManager.cs" Line="25" Column="42" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

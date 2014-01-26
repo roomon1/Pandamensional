@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class PandaSpawner : MonoBehaviour {
+
 	const int MAX_LIVES = 3;
 	public int lives;
 
@@ -31,6 +32,8 @@ public class PandaSpawner : MonoBehaviour {
 			lastCheckpoint = levelRespawn;
 			transform.position = lastCheckpoint;
 			lives = MAX_LIVES;
+			PandaColor color = gameObject.GetComponent<PandaColor>();
+			color.Reset();
 		}
 	}
 

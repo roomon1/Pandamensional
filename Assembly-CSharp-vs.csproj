@@ -48,7 +48,9 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraBehaviour.cs" />
      <Compile Include="Assets\Scripts\ColoredPlatform.cs" />
-     <Compile Include="Assets\Scripts\LevelManager.cs" />
+     <Compile Include="Assets\Scripts\Level\Collectible.cs" />
+     <Compile Include="Assets\Scripts\Level\CollectibleManager.cs" />
+     <Compile Include="Assets\Scripts\Level\LevelManager.cs" />
      <Compile Include="Assets\Scripts\MainMenu\Button.cs" />
      <Compile Include="Assets\Scripts\MainMenu\ButtonActions\ButtonAction.cs" />
      <Compile Include="Assets\Scripts\MainMenu\ButtonActions\Level1Action.cs" />

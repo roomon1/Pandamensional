@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Level2Action : MonoBehaviour {
+public class Level1Action : ButtonAction {
 
 	// Use this for initialization
 	void Start () {
@@ -12,4 +12,10 @@ public class Level2Action : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	public override void Activate ()
+	{
+		Application.LoadLevel("Level1");
+	}
+
 }

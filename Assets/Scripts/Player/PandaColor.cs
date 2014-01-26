@@ -10,6 +10,7 @@ public class PandaColor : MonoBehaviour {
 	public eColor currentColor;
 
 	private LevelManager m_Manager;
+	private CameraBehaviour cameras;
 
 	//TODO: Put in public LevelColor here
 
@@ -21,6 +22,7 @@ public class PandaColor : MonoBehaviour {
 		IsRedUnlocked = false;
 
 		m_Manager = GameObject.FindGameObjectWithTag("Level").GetComponent<LevelManager>();
+		cameras = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraBehaviour> ();
 	}
 	
 	// Update is called once per frame
@@ -139,6 +141,7 @@ public class PandaColor : MonoBehaviour {
 		currentColor = newColor;
 		
 		m_Manager.SetColor(newColor, IsRedUnlocked, IsBlueUnlocked, IsYellowUnlocked);
+		cameras.SetNewActiveColor (newColor, newColor, newColor);
 		
 		//TODO: When sprites are added, change this region to use sprites
 		#region change player color

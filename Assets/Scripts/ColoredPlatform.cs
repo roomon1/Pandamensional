@@ -4,39 +4,24 @@ using System.Collections;
 [ExecuteInEditMode]
 public class ColoredPlatform : MonoBehaviour
 {
-	private static float MIN_DIMENSION = 1f;
 	private static int SPRITES_FOR_SIDE = 3;
 	private static int SPRITES_FOR_PLATFORM = SPRITES_FOR_SIDE * SPRITES_FOR_SIDE;
 
-	public float m_Height;
-	public float m_Width;
-
-	public Transform[] m_Sprites;
-
-	public bool m_ForceRestart = false;
+	public Transform[] m_UsedSprites;
 
 	private float m_CurrentHeight = -1f;
 	private float m_CurrentWidth = -1f;
+	
+	private bool m_ForceRestart = false;
 
 	private GameObject[,] m_ActiveSprites;
 
-	private BoxCollider2D m_Collider;
-
 	void Start ()
 	{
-		if (m_Sprites.Length < SPRITES_FOR_PLATFORM)
+		if (m_UsedSprites.Length < SPRITES_FOR_PLATFORM)
 		{
 			Debug.LogError(string.Format("Colored Platform at ({0}) does not have enough sprites.  {1} are required.", gameObject.transform.ToString(), SPRITES_FOR_PLATFORM));
 			return;
-		}
-
-		for (int i = 0; i < SPRITES_FOR_PLATFORM; ++i)
-		{
-			if (m_Sprites[i] == null)
-			{
-				Debug.LogError(string.Format("Colored Platform at ({0}) is missing sprite number {1}.", gameObject.transform.ToString(), i));
-				return;
-			}
 		}
 
 		Restart();
@@ -45,44 +30,44 @@ public class ColoredPlatform : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (m_ForceRestart ||
-		    m_CurrentWidth != m_Width ||
-		    m_CurrentHeight != m_Height)
+		if (m_ForceRestart)
 		{
-			m_Width  = Mathf.Max(m_Width,  MIN_DIMENSION);
-			m_Height = Mathf.Max(m_Height, MIN_DIMENSION);
 			Restart();
 			m_ForceRestart = false;
 		}
 	}
 
-	void Restart()
+	public void SetSize(float height, float width)
 	{
-		m_Collider = GetComponent<BoxCollider2D>();
+		m_CurrentHeight = height;
+		m_CurrentWidth = width;
+		if (m_ActiveSprites != null)
+			ArrangeSprites();
+	}
 
+	public void SetColor(Color newColor)
+	{
+		for (int r = 0; r < SPRITES_FOR_SIDE; ++r)
+		{
+			for (int c = 0; c < SPRITES_FOR_SIDE; ++c)
+			{
+				m_ActiveSprites[r, c].GetComponentInChildren<SpriteRenderer>().color = newColor;
+			}
+		}
+	}
+
+	public void ForceRestart()
+	{
+		m_ForceRestart = true;
+	}
+
+	private void Restart()
+	{
 		if (m_ActiveSprites == null)
 			m_ActiveSprites = new GameObject[SPRITES_FOR_SIDE, SPRITES_FOR_SIDE];
 
-		int r, c;
-		if (m_ForceRestart)
-		{
-			for (r = 0; r < SPRITES_FOR_SIDE; ++r)
-			{
-				for (c = 0; c < SPRITES_FOR_SIDE; ++c)
-				{
-					if (Application.isEditor)
-						GameObject.DestroyImmediate(m_ActiveSprites[r, c]);
-					else if (Application.isPlaying)
-						GameObject.Destroy(m_ActiveSprites[r, c]);
-					else
-						Debug.LogWarning(string.Format("Unhandled application state during restart: E:{0} P:{1} W:{2} L:{3}", Application.isEditor, Application.isPlaying, Application.isWebPlayer, Application.isLoadingLevel));
-					m_ActiveSprites[r, c] = null;
-				}
-			}
-		}
-
-		r = 0;
-		c = 0;
+		int r = 0;
+		int c = 0;
 		for (int i = 0; i < SPRITES_FOR_PLATFORM; ++i, ++c)
 		{
 			if (c >= SPRITES_FOR_SIDE)
@@ -92,25 +77,23 @@ public class ColoredPlatform : MonoBehaviour
 			}
 			if (m_ActiveSprites[r, c] == null)
 			{
-				m_ActiveSprites[r,c] = ((Transform)GameObject.Instantiate(m_Sprites[i])).gameObject;
-				m_ActiveSprites[r,c].transform.parent = gameObject.transform;
+				m_ActiveSprites[r, c] = m_UsedSprites[i].gameObject;
+				m_ActiveSprites[r, c].transform.parent = gameObject.transform;
 			}
 		}
 		
 		ArrangeSprites();
-
-		m_Collider.size = new Vector2(m_Width, m_Height);
-		m_CurrentHeight = m_Height;
-		m_CurrentWidth = m_Width;
 	}
 
-	void ArrangeSprites()
+	private void ArrangeSprites()
 	{
 		for (int r = 0; r < SPRITES_FOR_SIDE; ++r)
 		{
 			float yPos = YForRow(r);
 			for (int c = 0; c < SPRITES_FOR_SIDE; ++c)
 			{
+				if (m_ActiveSprites[r, c] == null)
+					continue;
 				float xPos = XForCol(c);
 				Vector3 spritePos = new Vector3(xPos, yPos);
 				m_ActiveSprites[r, c].transform.localPosition = spritePos;
@@ -121,20 +104,20 @@ public class ColoredPlatform : MonoBehaviour
 			}
 		}
 	}
-
+	
 	private float YForRow(int row)
 	{
-		return -ItemPos(row, m_Height);
+		return -ItemPos(row, m_CurrentHeight);
 	}
 
 	private float XForCol(int col)
 	{
-		return ItemPos(col, m_Width);
+		return ItemPos(col, m_CurrentWidth);
 	}
 
 	private float ItemPos(int ind, float dimSize)
 	{
-		float pos = -dimSize / 2f;
+		float pos = 0f;
 		for (int r = 0; r < ind; ++r)
 			pos += SpriteSize(r, dimSize);
 		pos += SpriteSize(ind, dimSize) / 2f;
@@ -143,12 +126,12 @@ public class ColoredPlatform : MonoBehaviour
 
 	private float SpriteHeight(int row)
 	{
-		return SpriteSize(row, m_Height);
+		return SpriteSize(row, m_CurrentHeight);
 	}
 
 	private float SpriteWidth(int col)
 	{
-		return SpriteSize(col, m_Width);
+		return SpriteSize(col, m_CurrentWidth);
 	}
 
 	private float SpriteSize(int ind, float dimSize)
@@ -161,5 +144,13 @@ public class ColoredPlatform : MonoBehaviour
 	private float SpriteSizeToScale(float size)
 	{
 		return size * SPRITES_FOR_SIDE;
+	}
+
+	private int SpriteNum(Transform sprite)
+	{
+		string name = sprite.GetComponent<SpriteRenderer>().sprite.name;
+		int ind = name.LastIndexOf("_");
+		string num = name.Substring(ind + 1);
+		return System.Convert.ToInt32(num);
 	}
 }

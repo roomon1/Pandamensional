@@ -6,12 +6,22 @@ public class PandaSpawner : MonoBehaviour {
 	const int MAX_LIVES = 3;
 	public int lives;
 
-	Vector3 levelRespawn;
+	GameObject levelRespawn = null;
 	Vector3 lastCheckpoint;
 
 	public void Start()
 	{
-		lastCheckpoint = levelRespawn;
+		if (levelRespawn == null)
+		{
+			Transform[] levelkids = GameObject.FindGameObjectWithTag("Level").GetComponentsInChildren<Transform>();
+			for (int i = 0; i < levelkids.Length; ++i)
+				if (levelkids[i].name == "LevelSpawner")
+				{
+					levelRespawn = levelkids[i].gameObject;
+					break;
+				}
+		}
+		lastCheckpoint = levelRespawn.transform.position;
 		transform.position = lastCheckpoint;
 		lives = MAX_LIVES;
 	}
@@ -29,7 +39,7 @@ public class PandaSpawner : MonoBehaviour {
 		}
 		else
 		{
-			lastCheckpoint = levelRespawn;
+			lastCheckpoint = levelRespawn.transform.position;
 			transform.position = lastCheckpoint;
 			lives = MAX_LIVES;
 			PandaColor color = gameObject.GetComponent<PandaColor>();
@@ -39,6 +49,6 @@ public class PandaSpawner : MonoBehaviour {
 
 	public void SetLevelSpawn(GameObject newLevelSpawn)
 	{
-		levelRespawn = newLevelSpawn.transform.position;
+		levelRespawn = newLevelSpawn;
 	}
 }

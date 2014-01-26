@@ -25,7 +25,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 20: {fileID: 2000000}
   m_Layer: 0
-  m_Name: Third Background Camera
+  m_Name: Third Camera BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ GameObject:
   - 4: {fileID: 400004}
   - 20: {fileID: 2000002}
   m_Layer: 0
-  m_Name: Second Background Camera BG
+  m_Name: Second Camera BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ GameObject:
   - 20: {fileID: 2000004}
   m_Layer: 0
   m_Name: Foreground Camera BG
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +108,7 @@ GameObject:
   - 4: {fileID: 400012}
   - 20: {fileID: 2000010}
   m_Layer: 0
-  m_Name: Third Background Camera
+  m_Name: Third Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,7 @@ GameObject:
   - 4: {fileID: 400014}
   - 20: {fileID: 2000012}
   m_Layer: 0
-  m_Name: Second Background Camera
+  m_Name: Second Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +138,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400016}
-  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: Game Cameras
   m_TagString: Untagged
@@ -154,9 +153,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400018}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: _Cameras
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -332,7 +332,7 @@ Camera:
   m_Depth: 2
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 131072
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100016}
+  m_GameObject: {fileID: 100018}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aebd696a0f5f3d4788a9f7f7470f2a4, type: 3}

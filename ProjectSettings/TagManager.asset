@@ -4,6 +4,7 @@
 TagManager:
   tags:
   - DeathTrigger
+  - Ground
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -13,13 +14,13 @@ TagManager:
   Builtin Layer 5: 
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: Ground
-  User Layer 9: Actors
-  User Layer 10: 
-  User Layer 11: 
-  User Layer 12: 
-  User Layer 13: 
-  User Layer 14: 
+  User Layer 8: Actors
+  User Layer 9: Objects
+  User Layer 10: Effects (ignore)
+  User Layer 11: White
+  User Layer 12: Red
+  User Layer 13: Blue
+  User Layer 14: Yellow
   User Layer 15: 
   User Layer 16: 
   User Layer 17: 

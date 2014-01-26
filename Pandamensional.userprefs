@@ -2,9 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Level\ColorManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Level\ColorItem.cs" Line="14" Column="3" />
-      <File FileName="Assets\Scripts\Level\ColorManager.cs" Line="101" Column="3" />
-      <File FileName="Assets\Scripts\Level\LevelManager.cs" Line="98" Column="3" />
+      <File FileName="Assets\Scripts\Level\ColorManager.cs" Line="110" Column="21" />
+      <File FileName="Assets\Scripts\CameraBehaviour.cs" Line="56" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

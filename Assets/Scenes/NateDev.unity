@@ -188,7 +188,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 450792552}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2047595501}
 --- !u!1 &174827685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,7 +1271,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 2047595501}
     m_Modifications:
     - target: {fileID: 400100, guid: adb1264e8b138044194747f516b6521f, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2330,6 +2330,7 @@ Transform:
   - {fileID: 1059138603}
   - {fileID: 274257677}
   - {fileID: 174827686}
+  - {fileID: 115815901}
   - {fileID: 442691040}
   - {fileID: 1529045896}
   m_Father: {fileID: 0}

@@ -97,15 +97,12 @@ public class ColorManager : MonoBehaviour {
 		currentColor = newColor;
 		
 		m_Manager.SetColor(currentColor, IsRedUnlocked, IsBlueUnlocked, IsYellowUnlocked);
-		eColor myNextColor = nextColor(currentColor);
-		cameras.SetNewActiveColor (currentColor, myNextColor, nextColor(myNextColor));
-		
-		//TODO: When sprites are added, change this region to use sprites
-		#region change player color
-		
+		eColor myNextColor = colorAfter(currentColor);
+		Debug.Log("Next color = " + myNextColor.ToString());
+		Debug.Log("Next next color = " + colorAfter(myNextColor).ToString());
+		if (currentColor != eColor.White)
+			cameras.SetNewActiveColor (currentColor, myNextColor, colorAfter(myNextColor));
 		pandaColor.ColorShift(currentColor);
-		
-		#endregion
 	}
 
 	eColor nextColor(eColor curColor)
@@ -140,5 +137,20 @@ public class ColorManager : MonoBehaviour {
 		}
 		
 		return eColor.Black;
+	}
+
+	eColor colorAfter(eColor curColor)
+	{		
+		switch(curColor)
+		{
+		case eColor.Red:
+			return eColor.Blue;
+		case eColor.Blue:
+			return eColor.Yellow;
+		case eColor.Yellow:
+			return eColor.Red;
+		}
+		
+		return eColor.White;
 	}
 }

@@ -13,37 +13,16 @@ public class PlatformColor
 		Black
 	}
 
-	public static Dictionary<eColor, Color> ColorDict;
-
-	public static Color[] AllColors()
-	{
-		InitColorDict();
-		Color[] colors = new Color[ColorDict.Values.Count];
-		int i = 0;
-		foreach (Color c in ColorDict.Values)
-			colors[i++] = c;
-		return colors;
-	}
+	public static eColor[] eColorList = {eColor.White, eColor.Red, eColor.Yellow, eColor.Blue, eColor.Black};
+	public static Color[] ColorList = {Color.white, Color.red, Color.yellow, Color.blue, Color.black};
+	public static string[] NameList = {"White", "Red", "Yellow", "Blue", "Black"};
 
 	public static UnityEngine.Color ToColor(eColor c)
 	{
-		Color ret;
-		if (!ColorDict.TryGetValue (c, out ret))
-			return Color.gray;
+		for (int i = 0; i < eColorList.Length; ++i)
+			if (eColorList[i] == c)
+				return ColorList[i];
 
-		return ret;
-	}
-
-	public static void InitColorDict()
-	{
-		if (ColorDict != null)
-			return;
-
-		ColorDict = new Dictionary<eColor, Color>();
-		ColorDict.Add(eColor.White,  Color.white);
-		ColorDict.Add(eColor.Red,    Color.red);
-		ColorDict.Add(eColor.Yellow, Color.yellow);
-		ColorDict.Add(eColor.Blue,   Color.blue);
-		ColorDict.Add(eColor.Black,  Color.black);
+		return Color.gray;
 	}
 }

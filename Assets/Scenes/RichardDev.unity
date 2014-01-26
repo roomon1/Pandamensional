@@ -83,7 +83,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 33288971}
   - 212: {fileID: 33288972}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 65384858}
   - 212: {fileID: 65384859}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_6(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 102409345}
   - 212: {fileID: 102409346}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_5(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 205467335}
   - 212: {fileID: 205467336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_6(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 251187229}
   - 212: {fileID: 251187230}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_7(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,8 +338,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 296448523}
   - 114: {fileID: 296448524}
-  m_Layer: 0
-  m_Name: White
+  m_Layer: 8
+  m_Name: Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -352,7 +352,7 @@ Transform:
   m_PrefabInternal: {fileID: 1249143369}
   m_GameObject: {fileID: 296448522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1801472174}
@@ -396,7 +396,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 311568183}
   - 212: {fileID: 311568184}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_2(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 314119623}
   - 212: {fileID: 314119624}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_3(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 422269821}
   - 212: {fileID: 422269822}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_8(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,8 +549,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 490107693}
   - 114: {fileID: 490107694}
-  m_Layer: 0
-  m_Name: Black
+  m_Layer: 8
+  m_Name: White
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -607,7 +607,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 508598409}
   - 212: {fileID: 508598410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_7(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -658,7 +658,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 529533534}
   - 212: {fileID: 529533535}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_4(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -709,7 +709,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 570191956}
   - 212: {fileID: 570191957}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,7 +760,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 615953147}
   - 212: {fileID: 615953148}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,8 +811,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 650761892}
   - 114: {fileID: 650761893}
-  m_Layer: 0
-  m_Name: Blue
+  m_Layer: 8
+  m_Name: Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -825,7 +825,7 @@ Transform:
   m_PrefabInternal: {fileID: 1249143369}
   m_GameObject: {fileID: 650761891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 570191956}
@@ -869,7 +869,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 668351710}
   - 212: {fileID: 668351711}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -920,7 +920,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 776140451}
   - 212: {fileID: 776140452}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_6(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -971,7 +971,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 831020352}
   - 212: {fileID: 831020353}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1022,7 +1022,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 875229679}
   - 212: {fileID: 875229680}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_6(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1073,7 +1073,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 928677990}
   - 212: {fileID: 928677991}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_8(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1188,7 +1188,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 950877262}
   - 212: {fileID: 950877263}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_3(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1239,7 +1239,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1064481493}
   - 212: {fileID: 1064481494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1290,7 +1290,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1088855199}
   - 212: {fileID: 1088855200}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_4(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1341,7 +1341,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1133159736}
   - 212: {fileID: 1133159737}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1392,7 +1392,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1146138198}
   - 212: {fileID: 1146138199}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_4(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1443,7 +1443,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1164797616}
   - 212: {fileID: 1164797617}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_7(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1494,7 +1494,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1226895817}
   - 212: {fileID: 1226895818}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1651,6 +1651,46 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: adb1264e8b138044194747f516b6521f, type: 2}
+      propertyPath: m_Name
+      value: Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 100060, guid: adb1264e8b138044194747f516b6521f, type: 2}
+      propertyPath: m_Name
+      value: White
+      objectReference: {fileID: 0}
+    - target: {fileID: 100040, guid: adb1264e8b138044194747f516b6521f, type: 2}
+      propertyPath: m_Name
+      value: Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 100020, guid: adb1264e8b138044194747f516b6521f, type: 2}
+      propertyPath: m_Name
+      value: Black
+      objectReference: {fileID: 0}
+    - target: {fileID: 100096, guid: adb1264e8b138044194747f516b6521f, type: 2}
+      propertyPath: m_Name
+      value: Yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 400060, guid: adb1264e8b138044194747f516b6521f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: adb1264e8b138044194747f516b6521f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: adb1264e8b138044194747f516b6521f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400020, guid: adb1264e8b138044194747f516b6521f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400096, guid: adb1264e8b138044194747f516b6521f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: adb1264e8b138044194747f516b6521f, type: 2}
   m_RootGameObject: {fileID: 2135012919}
@@ -1665,7 +1705,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1257991857}
   - 212: {fileID: 1257991858}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_4(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1716,7 +1756,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1327232401}
   - 212: {fileID: 1327232402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_5(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1767,7 +1807,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1365323478}
   - 212: {fileID: 1365323479}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_2(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1818,7 +1858,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1395569853}
   - 212: {fileID: 1395569854}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_3(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1869,8 +1909,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1528284899}
   - 114: {fileID: 1528284900}
-  m_Layer: 0
-  m_Name: Yellow
+  m_Layer: 8
+  m_Name: Black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1883,7 +1923,7 @@ Transform:
   m_PrefabInternal: {fileID: 1249143369}
   m_GameObject: {fileID: 1528284898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2143399683}
@@ -1927,7 +1967,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1557634554}
   - 212: {fileID: 1557634555}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_2(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1978,7 +2018,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1600290538}
   - 212: {fileID: 1600290539}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_3(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2029,7 +2069,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1638356364}
   - 212: {fileID: 1638356363}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_5(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2080,7 +2120,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1664995411}
   - 212: {fileID: 1664995412}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_7(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2131,7 +2171,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1689512515}
   - 212: {fileID: 1689512516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_5(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2182,7 +2222,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1722573890}
   - 212: {fileID: 1722573891}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_6(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2233,7 +2273,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1789326769}
   - 212: {fileID: 1789326770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_5(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2284,7 +2324,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1801472174}
   - 212: {fileID: 1801472175}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2335,7 +2375,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1802289726}
   - 212: {fileID: 1802289727}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_2(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2386,7 +2426,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1868984332}
   - 212: {fileID: 1868984333}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_4(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2437,7 +2477,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1882237315}
   - 212: {fileID: 1882237316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_3(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2488,8 +2528,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1912150678}
   - 114: {fileID: 1912150677}
-  m_Layer: 0
-  m_Name: Red
+  m_Layer: 8
+  m_Name: Yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2524,7 +2564,7 @@ Transform:
   m_PrefabInternal: {fileID: 1249143369}
   m_GameObject: {fileID: 1912150676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1133159736}
@@ -2546,7 +2586,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1963487450}
   - 212: {fileID: 1963487451}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_8(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2597,7 +2637,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1965856395}
   - 212: {fileID: 1965856396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_7(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2648,7 +2688,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2002244433}
   - 212: {fileID: 2002244434}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_2(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2739,7 +2779,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2108584025}
   - 212: {fileID: 2108584026}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_8(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2790,7 +2830,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2122728234}
   - 212: {fileID: 2122728235}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_8(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2843,7 +2883,7 @@ GameObject:
   - 114: {fileID: 2135012920}
   - 61: {fileID: 2135012923}
   - 50: {fileID: 2135012922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2862,7 +2902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bda3ed4a72dd549899a60b6e81645d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Color: 3
+  m_Color: 0
   m_Width: 1
   m_Height: 1
   m_RedPlatform: {fileID: 1912150678}
@@ -2924,7 +2964,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2143399683}
   - 212: {fileID: 2143399684}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseWall_0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

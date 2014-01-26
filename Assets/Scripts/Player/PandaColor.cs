@@ -27,22 +27,27 @@ public class PandaColor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown("BlueShift") &&
-		    IsBlueUnlocked)
+		if (Input.GetButtonDown("BlueShift") 
+		    && IsBlueUnlocked)
 		{
 			ColorShift (eColor.Blue);
 		}
 
-		if (Input.GetButtonDown("RedShift") &&
-		    IsRedUnlocked)
+		if (Input.GetButtonDown("RedShift") 
+		    && IsRedUnlocked)
 		{
 			ColorShift (eColor.Red);
 		}
 
-		if (Input.GetButtonDown("YellowShift") &&
-		    IsYellowUnlocked)
+		if (Input.GetButtonDown("YellowShift") 
+		    && IsYellowUnlocked)
 		{
 			ColorShift (eColor.Yellow);
+		}
+
+		if (Input.GetButtonDown("CycleColor"))
+		{
+			ColorShift (nextColor());
 		}
 	}
 
@@ -50,23 +55,56 @@ public class PandaColor : MonoBehaviour {
 		string tag = other.gameObject.tag;
 		if (tag.Equals("RedTrigger"))
 		{
-			UnlockColor (eColor.Red);
+			unlockColor (eColor.Red);
 			other.gameObject.SetActive(false);
 		}
 		if (tag.Equals("BlueTrigger"))
 		{
-			UnlockColor (eColor.Blue);
+			unlockColor (eColor.Blue);
 			other.gameObject.SetActive(false);
 		}
 		if (tag.Equals("YellowTrigger"))
 		{
-			UnlockColor (eColor.Yellow);
+			unlockColor (eColor.Yellow);
 			other.gameObject.SetActive(false);
 		}
-
 	}
 
-	public void UnlockColor(eColor newColor)
+	eColor nextColor()
+	{
+		if (!IsRedUnlocked
+		    && !IsBlueUnlocked
+		    && !IsYellowUnlocked)
+		{
+			return eColor.White;
+		}
+
+		switch(currentColor)
+		{
+		case eColor.Red:
+			if (IsBlueUnlocked)
+				return eColor.Blue;
+			if (IsYellowUnlocked)
+				return eColor.Yellow;
+			return eColor.Red;
+		case eColor.Blue:
+			if (IsYellowUnlocked)
+				return eColor.Yellow;
+			if (IsRedUnlocked)
+				return eColor.Red;
+			return eColor.Blue;
+		case eColor.Yellow:
+			if (IsRedUnlocked)
+				return eColor.Red;
+			if (IsBlueUnlocked)
+				return eColor.Blue;
+			return eColor.Yellow;
+		}
+
+		return eColor.Black;
+	}
+
+	void unlockColor(eColor newColor)
 	{
 		switch (newColor)
 		{

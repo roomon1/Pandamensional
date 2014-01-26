@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour {
 
 	void Awake()
 	{
+		if (pandaSpawner == null)
+			pandaSpawner = GameObject.FindGameObjectWithTag ("Player").GetComponent<PandaSpawner> ();
 		pandaSpawner.SetLevelSpawn(LevelRespawn);
 	}
 

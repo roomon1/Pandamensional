@@ -6,9 +6,9 @@ TagManager:
   - DeathTrigger
   - Ground
   - Level
-  - BlueTrigger
   - RedTrigger
   - YellowTrigger
+  - BlueTrigger
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -29,7 +29,7 @@ TagManager:
   User Layer 16: Blue BG
   User Layer 17: Yellow BG
   User Layer 18: White BG
-  User Layer 19: 
+  User Layer 19: Black
   User Layer 20: 
   User Layer 21: 
   User Layer 22: 

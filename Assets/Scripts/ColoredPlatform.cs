@@ -16,6 +16,8 @@ public class ColoredPlatform : MonoBehaviour
 
 	private GameObject[,] m_ActiveSprites;
 
+	private Color m_Color = Color.white;
+
 	void Start ()
 	{
 		if (m_UsedSprites.Length < SPRITES_FOR_PLATFORM)
@@ -47,11 +49,15 @@ public class ColoredPlatform : MonoBehaviour
 
 	public void SetColor(Color newColor)
 	{
-		for (int r = 0; r < SPRITES_FOR_SIDE; ++r)
+		m_Color = newColor;
+		if (m_ActiveSprites != null)
 		{
-			for (int c = 0; c < SPRITES_FOR_SIDE; ++c)
+			for (int r = 0; r < SPRITES_FOR_SIDE; ++r)
 			{
-				m_ActiveSprites[r, c].GetComponentInChildren<SpriteRenderer>().color = newColor;
+				for (int c = 0; c < SPRITES_FOR_SIDE; ++c)
+				{
+					m_ActiveSprites[r, c].GetComponentInChildren<SpriteRenderer>().color = m_Color;
+				}
 			}
 		}
 	}
@@ -78,7 +84,8 @@ public class ColoredPlatform : MonoBehaviour
 			m_ActiveSprites[r, c] = m_UsedSprites[i].gameObject;
 			m_ActiveSprites[r, c].transform.parent = gameObject.transform;
 		}
-		
+
+		SetColor(m_Color);
 		ArrangeSprites();
 	}
 

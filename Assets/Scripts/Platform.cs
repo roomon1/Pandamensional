@@ -20,6 +20,8 @@ public class Platform : MonoBehaviour
 	private float m_CurrentHeight = -1f;
 	
 	private BoxCollider2D m_Collider;
+
+	private bool m_Unlocked = false;
 	
 	void Awake()
 	{
@@ -32,6 +34,8 @@ public class Platform : MonoBehaviour
 		m_Platform.SetSize(m_CurrentHeight, m_CurrentWidth);
 		
 		m_Collider = GetComponent<BoxCollider2D>();
+
+		m_Unlocked = !Application.isPlaying;
 	}
 	
 	void Start()
@@ -66,16 +70,39 @@ public class Platform : MonoBehaviour
 		
 		SetColor(m_Color);
 	}
-	
-	private void SetColor(eColor color)
+
+	public void SetUnlocked(bool unlocked)
 	{
+		m_Unlocked = unlocked;
+	}
+
+	public void SetActiveColor(eColor newColor)
+	{
+		if (m_Color == eColor.White ||
+		    !m_Unlocked ||
+		    m_Color == newColor)
+		{
+			SetColor (newColor);
+			m_Collider.enabled = true;
+		}
+		else
+		{
+			m_Collider.enabled = false;
+		}
+	}
+
+	public void SetColor(eColor color)
+	{
+		if (!m_Unlocked)
+			color = eColor.White;
+
 		int ind = 0;
 		for (ind = 0; ind < PlatformColor.eColorList.Length; ++ind)
 			if (PlatformColor.eColorList[ind] == color)
 				break;
 		
 		int mask = LayerMask.NameToLayer(PlatformColor.NameList[ind]);
-		
+
 		m_Platform.SetColor(PlatformColor.ColorList[ind]);
 		m_Platform.transform.name = PlatformColor.NameList[ind];
 		

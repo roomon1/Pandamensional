@@ -14,6 +14,7 @@ public class PandaControl : MonoBehaviour {
 
 	private Rigidbody2D r;
 	private bool facing = true;
+	public float movement;
 
 	private PandaSpawner spawner;
 
@@ -30,7 +31,6 @@ public class PandaControl : MonoBehaviour {
 	}
 
 	IEnumerator MovementInput() {
-		float movement;
 
 		while (true) {
 			movement = Input.GetAxis("Horizontal");

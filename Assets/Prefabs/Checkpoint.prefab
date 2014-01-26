@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 61: {fileID: 6100000}
   m_Layer: 2
-  m_Name: Respawn
+  m_Name: Checkpoint
   m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

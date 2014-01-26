@@ -11,8 +11,11 @@ public class Platform : MonoBehaviour
 	
 	public float m_Width  = MIN_DIMENSION;
 	public float m_Height = MIN_DIMENSION;
-	
+
+	public bool m_PassThrough = false;
+
 	public ColoredPlatform m_Platform;
+	private ColoredPlatform[] m_WhitePlatforms;
 	
 	public bool m_ForceRestart = false;
 	
@@ -41,6 +44,22 @@ public class Platform : MonoBehaviour
 	
 	void Start()
 	{
+		if (m_Color == eColor.White && Application.isPlaying)
+		{
+			m_WhitePlatforms = new ColoredPlatform[3];
+			m_WhitePlatforms[0] = m_Platform;
+			for (int  i = 1; i < m_WhitePlatforms.Length; ++i)
+			{
+				m_WhitePlatforms[i] = (ColoredPlatform)Instantiate(m_Platform);
+				m_WhitePlatforms[i].transform.parent = m_Platform.transform.parent;
+				m_WhitePlatforms[i].transform.localPosition = m_Platform.transform.localPosition;
+			}
+		}
+		else
+		{
+			m_WhitePlatforms = new ColoredPlatform[1];
+			m_WhitePlatforms[0] = m_Platform;
+		}
 		SetActiveColor(eColor.White);
 		Restart();
 	}
@@ -65,12 +84,13 @@ public class Platform : MonoBehaviour
 		
 		if (m_ForceRestart)
 			m_Platform.ForceRestart();
-		m_Platform.SetSize(m_CurrentHeight, m_CurrentWidth);
+		for (int i = 0; i < m_WhitePlatforms.Length; ++i)
+			m_WhitePlatforms[i].SetSize(m_CurrentHeight, m_CurrentWidth);
 		
 		m_Collider.size = new Vector2(m_CurrentWidth, m_CurrentHeight);
 		m_Collider.center = new Vector2(m_CurrentWidth / 2f, -m_CurrentHeight / 2f);
 		
-		SetColor(m_Color);
+		SetActiveColor(m_Color);
 	}
 
 	public void SetUnlocked(bool unlocked)
@@ -80,34 +100,44 @@ public class Platform : MonoBehaviour
 
 	public void SetActiveColor(eColor newColor)
 	{
-		if (m_Color == eColor.White ||
-		    m_Color == newColor)
-			SetColor(newColor);
+		if (m_Color == newColor)
+		{
+			if (m_Color == eColor.White && Application.isPlaying)
+			{
+				SetColor(eColor.Red,    m_WhitePlatforms[0]);
+				SetColor(eColor.Blue,   m_WhitePlatforms[1]);
+				SetColor(eColor.Yellow, m_WhitePlatforms[2]);
+			}
+			else
+				SetColor(newColor, m_Platform);
+		}
 		m_Collider.enabled = m_Unlocked && (m_Color == eColor.White || m_Color == newColor);
 	}
 
-	public void SetColor(eColor color)
+	public void SetColor(eColor newColor, ColoredPlatform platform)
 	{
 		if (!m_Unlocked)
-			color = eColor.Black;
+			newColor = eColor.Black;
 
 		int ind = 0;
-		for (ind = 0; ind < PlatformColor.eColorList.Length && PlatformColor.eColorList[ind] != color; ++ind);
-		
+		for (ind = 0; ind < PlatformColor.eColorList.Length && PlatformColor.eColorList[ind] != newColor; ++ind);
+		int mind = 0;
+		for (mind = 0; mind < PlatformColor.eColorList.Length && PlatformColor.eColorList[mind] != m_Color; ++mind);
+
 		int mask = LayerMask.NameToLayer(PlatformColor.NameList[ind]);
 
-		m_Platform.SetColor(PlatformColor.ColorList[ind]);
-		m_Platform.transform.name = PlatformColor.NameList[ind];
-		
+		platform.SetColor (PlatformColor.ColorList[ind]);
+		platform.transform.name = PlatformColor.NameList[ind];
+
 		Queue<Transform> children = new Queue<Transform>();
-		children.Enqueue(m_Platform.transform);
-		
+		children.Enqueue(platform.transform);
+
 		while (children.Count > 0)
 		{
-			Transform t = children.Dequeue();
+			Transform t = children.Dequeue ();
 			t.gameObject.layer = mask;
 			foreach (Transform child in t)
-				children.Enqueue(child);
+				children.Enqueue (child);
 		}
 	}
 }

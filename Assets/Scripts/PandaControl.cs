@@ -15,10 +15,12 @@ public class PandaControl : MonoBehaviour {
 	private Vector3 currentRespawn;
 
 	private Rigidbody2D r;
+	private bool facing = true;
 
 	void Awake () {
 		r = rigidbody2D;
-		groundLayer = 1 << LayerMask.NameToLayer("Ground");
+		groundLayer = (1 << LayerMask.NameToLayer ("White")) + (1 << LayerMask.NameToLayer ("Red")) + (1 << LayerMask.NameToLayer ("Blue")) + (1 << LayerMask.NameToLayer ("Yellow"));
+		facing = transform.localScale.x == -1 ? true : false;
 	}
 
 	void Start () {
@@ -30,12 +32,24 @@ public class PandaControl : MonoBehaviour {
 	}
 
 	IEnumerator MovementInput() {
-		while (true) {
-			r.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, r.velocity.y);
+		float movement;
 
-			if (Physics2D.Raycast(transform.position, -Vector2.up, 1.1f, groundLayer)) {
-				isGrounded = true;
+		while (true) {
+			movement = Input.GetAxis("Horizontal");
+
+			r.velocity = new Vector2(movement * moveSpeed, r.velocity.y);
+
+			if (movement > 0 && facing == false) {
+				transform.localScale = new Vector3(-1,1,1);
+				facing = true;
 			}
+			else if (movement < 0 && facing == true) {
+				transform.localScale = Vector3.one;
+				facing = false;
+			}
+
+			if (Physics2D.Raycast(transform.position, -Vector2.up, 1.1f, groundLayer))
+				isGrounded = true;
 			else 
 				isGrounded = false;
 

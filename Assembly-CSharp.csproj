@@ -50,6 +50,8 @@
      <Compile Include="Assets\Scripts\ColoredPlatform.cs" />
      <Compile Include="Assets\Scripts\Level\Collectible.cs" />
      <Compile Include="Assets\Scripts\Level\CollectibleManager.cs" />
+     <Compile Include="Assets\Scripts\Level\ColorItem.cs" />
+     <Compile Include="Assets\Scripts\Level\ColorManager.cs" />
      <Compile Include="Assets\Scripts\Level\LevelManager.cs" />
      <Compile Include="Assets\Scripts\MainMenu\Button.cs" />
      <Compile Include="Assets\Scripts\MainMenu\ButtonActions\ButtonAction.cs" />
@@ -59,6 +61,7 @@
      <Compile Include="Assets\Scripts\MainMenu\ButtonActions\NewGameAction.cs" />
      <Compile Include="Assets\Scripts\MainMenu\ButtonActions\OptionsAction.cs" />
      <Compile Include="Assets\Scripts\MainMenu\Menu.cs" />
+     <Compile Include="Assets\Scripts\MovingPlatform.cs" />
      <Compile Include="Assets\Scripts\Platform.cs" />
      <Compile Include="Assets\Scripts\PlatformColor.cs" />
      <Compile Include="Assets\Scripts\Player\PandaColor.cs" />

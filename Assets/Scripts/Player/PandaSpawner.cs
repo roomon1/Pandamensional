@@ -9,6 +9,8 @@ public class PandaSpawner : MonoBehaviour {
 	GameObject levelRespawn = null;
 	Vector3 lastCheckpoint;
 
+	LevelManager levelManager;
+
 	public void Start()
 	{
 		if (levelRespawn == null)
@@ -24,6 +26,8 @@ public class PandaSpawner : MonoBehaviour {
 		lastCheckpoint = levelRespawn.transform.position;
 		transform.position = lastCheckpoint;
 		lives = MAX_LIVES;
+
+		levelManager = GameObject.FindGameObjectWithTag ("Level").GetComponent<LevelManager> ();
 	}
 	
 	public void SetRespawn(Vector3 respawn) {
@@ -42,8 +46,7 @@ public class PandaSpawner : MonoBehaviour {
 			lastCheckpoint = levelRespawn.transform.position;
 			transform.position = lastCheckpoint;
 			lives = MAX_LIVES;
-			PandaColor color = gameObject.GetComponent<PandaColor>();
-			color.Reset();
+			levelManager.Reset();
 		}
 	}
 

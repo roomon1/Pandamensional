@@ -89,4 +89,13 @@ public class LevelManager : MonoBehaviour {
 			m_YellowPlatforms[i].SetActiveColor(newColor);
 		}
 	}
+
+	public void Reset()
+	{
+		ColorManager colorMan = gameObject.GetComponent<ColorManager>();
+		CollectibleManager collectibleMan = gameObject.GetComponent<CollectibleManager>();
+
+		colorMan.Reset();
+		collectibleMan.Reset();
+	}
 }

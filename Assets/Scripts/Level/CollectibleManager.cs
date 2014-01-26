@@ -22,7 +22,7 @@ public class CollectibleManager : MonoBehaviour {
 	// Update is called once per frame
 	void OnGUI () {
 		string output = string.Format("Collectibles {0}/{1}", collectedCollectibles, maxCollectibles);
-		GUI.TextField(new Rect(10, 10, 100, 20a), output);
+		GUI.TextField(new Rect(10, 10, 100, 20), output);
 	}
 	
 	public void CollectibleObtained()
@@ -31,7 +31,7 @@ public class CollectibleManager : MonoBehaviour {
 			Debug.Log("Obtained more collectibles than possible.");
 	}
 	
-	public void ResetLevel()
+	public void Reset()
 	{
 		collectedCollectibles = 0;
 		foreach (Collectible curCollectible in collectibles)

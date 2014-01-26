@@ -2,16 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public enum eColor
+{
+	White,
+	Red,
+	Yellow,
+	Blue,
+	Black
+}
+
 public class PlatformColor
 {
-	public enum eColor
-	{
-		White,
-		Red,
-		Yellow,
-		Blue,
-		Black
-	}
 
 	public static Dictionary<eColor, Color> ColorDict;
 
@@ -27,6 +28,8 @@ public class PlatformColor
 
 	public static UnityEngine.Color ToColor(eColor c)
 	{
+		InitColorDict();
+
 		Color ret;
 		if (!ColorDict.TryGetValue (c, out ret))
 			return Color.gray;

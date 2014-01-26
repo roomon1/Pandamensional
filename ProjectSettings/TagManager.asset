@@ -4,6 +4,9 @@
 TagManager:
   tags:
   - DeathTrigger
+  - RedTrigger
+  - BlueTrigger
+  - YellowTrigger
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

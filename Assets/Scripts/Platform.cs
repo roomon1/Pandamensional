@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,7 +7,7 @@ public class Platform : MonoBehaviour
 {
 	private static float MIN_DIMENSION = 1f;
 
-	public PlatformColor.eColor m_Color = PlatformColor.eColor.White;
+	public eColor m_Color = eColor.White;
 
 	public float m_Width  = MIN_DIMENSION;
 	public float m_Height = MIN_DIMENSION;

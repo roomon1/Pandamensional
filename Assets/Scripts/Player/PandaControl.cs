@@ -15,10 +15,11 @@ public class PandaControl : MonoBehaviour {
 	private List<int> groundedLayers;
 
 	private Rigidbody2D r;
-	private bool facing = true;
+	private bool facing = false;
 	public float movement;
 
 	private PandaSpawner spawner;
+	private Animator animator;
 
 	void Awake () {
 		r = rigidbody2D;
@@ -28,6 +29,7 @@ public class PandaControl : MonoBehaviour {
 	}
 
 	void Start () {
+		animator = gameObject.GetComponent<Animator>();
 		StartCoroutine("MovementInput");	
 		StartCoroutine("PlayerAttacked");
 	}
@@ -69,14 +71,19 @@ public class PandaControl : MonoBehaviour {
 
 		while (true) {
 			movement = Input.GetAxis("Horizontal");
+
+			if (movement != 0.0)
+				animator.SetBool("Running", true);
+			else
+				animator.SetBool("Running", false);
 			
-			if (movement > 0 && facing == false) {
-				transform.localScale = new Vector3(-1,1,1);
-				facing = true;
-			}
-			else if (movement < 0 && facing == true) {
+			if (movement > 0 && facing == true) {
 				transform.localScale = Vector3.one;
 				facing = false;
+			}
+			else if (movement < 0 && facing == false) {
+				transform.localScale = new Vector3(-1,1,1);
+				facing = true;
 			}
 
 			if (!Physics2D.Raycast(transform.position + Vector3.up, facing ? Vector2.right : -Vector2.right, .75f, groundLayer) &&
@@ -90,13 +97,21 @@ public class PandaControl : MonoBehaviour {
 
 			if (Physics2D.Raycast(transform.position + Vector3.right * .5f, -Vector2.up, 1.1f, groundLayer) ||
 			    Physics2D.Raycast(transform.position + Vector3.left * .5f, -Vector2.up, 1.1f, groundLayer))
+			{
 				isGrounded = true;
+				animator.SetBool("Jumping", false);
+			}
 			else 
+			{
 				isGrounded = false;
+				animator.SetBool("Jumping", true);
+			}
+				
 
 			if (Input.GetButtonDown("Jump") && isGrounded) {
 				r.velocity = new Vector2(r.velocity.x, jumpSpeed);
 				isGrounded = false;
+				animator.SetBool("Jumping", true); 
 			}
 
 			yield return null;

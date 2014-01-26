@@ -56,9 +56,6 @@ public class PandaControl : MonoBehaviour {
 			else 
 				isGrounded = false;
 
-			if (Input.GetButtonDown("Jump"))
-				Debug.Log("Grounded = " + isGrounded.ToString());
-
 			if (Input.GetButtonDown("Jump") && isGrounded) {
 				r.velocity = new Vector2(r.velocity.x, jumpSpeed);
 				isGrounded = false;

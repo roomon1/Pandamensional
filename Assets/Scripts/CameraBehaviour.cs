@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CameraBehaviour : MonoBehaviour {
 
+	private static int DefaultCullMask = -1044481;
+
 	public Vector3 offset = new Vector3(0,2f,-10f);
 	public Vector2 yBounds = new Vector2(-3f,0f);
 	public Vector2 xBounds = new Vector2(-5f,15f);
@@ -20,7 +22,7 @@ public class CameraBehaviour : MonoBehaviour {
 	private Camera secondCamera_BG;
 	private Camera thirdCamera_BG;
 
-	private int baseCullMask = -520193;
+	public LayerMask baseCullMask = DefaultCullMask;
 //	private int redCullMask = 1 << LayerMask.NameToLayer ("Red");
 //	private int blueCullMask = 1 << LayerMask.NameToLayer ("Blue");
 //	private int yellowCullMask = 1 << LayerMask.NameToLayer ("Yellow");
@@ -39,6 +41,9 @@ public class CameraBehaviour : MonoBehaviour {
 		foregroundCamera_BG = transform.Find("Background Cameras/Foreground Camera BG").camera;
 		secondCamera_BG = transform.Find("Background Cameras/Second Camera BG").camera;
 		thirdCamera_BG = transform.Find("Background Cameras/Third Camera BG").camera;
+
+		if (baseCullMask.value != DefaultCullMask)
+			Debug.LogWarning("Non-default base cull mask on cameras: " + baseCullMask.value);
 	}
 
 	void Start () {
@@ -47,13 +52,13 @@ public class CameraBehaviour : MonoBehaviour {
 
 	public void SetNewActiveColor(eColor activeColour, eColor secondColour, eColor thirdColour) {
 		if (activeColour == eColor.White) {
-			foregroundCamera.cullingMask = baseCullMask;
+			foregroundCamera.cullingMask = baseCullMask.value;
 			foregroundCamera_BG.enabled = false;
 		}
 		else {
-			foregroundCamera.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(activeColour)));
+			foregroundCamera.cullingMask = baseCullMask.value | (1 << LayerMask.NameToLayer (PlatformColor.ToString(activeColour)));
 			foregroundCamera_BG.enabled = true;
-			foregroundCamera_BG.cullingMask = (1 << LayerMask.NameToLayer (PlatformColor.ToString(activeColour) + " BG"));
+			foregroundCamera_BG.cullingMask = baseCullMask.value | (1 << LayerMask.NameToLayer (PlatformColor.ToString(activeColour) + " BG"));
 		}
 
 		if (secondColour == eColor.White) {
@@ -62,9 +67,9 @@ public class CameraBehaviour : MonoBehaviour {
 		}
 		else {
 			secondCamera.enabled = true;
-			secondCamera.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(secondColour)));
+			secondCamera.cullingMask = baseCullMask.value | (1 << LayerMask.NameToLayer (PlatformColor.ToString(secondColour)));
 			secondCamera_BG.enabled = true;
-			secondCamera_BG.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(secondColour) + " BG"));
+			secondCamera_BG.cullingMask = baseCullMask.value | (1 << LayerMask.NameToLayer (PlatformColor.ToString(secondColour) + " BG"));
 		}
 
 		if (thirdColour == eColor.White) {
@@ -73,9 +78,9 @@ public class CameraBehaviour : MonoBehaviour {
 		}
 		else {
 			thirdCamera.enabled = true;
-			thirdCamera.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(thirdColour)));
+			thirdCamera.cullingMask = baseCullMask.value | (1 << LayerMask.NameToLayer (PlatformColor.ToString(thirdColour)));
 			thirdCamera_BG.enabled = false;
-			thirdCamera_BG.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(thirdColour) + " BG"));
+			thirdCamera_BG.cullingMask = baseCullMask.value | (1 << LayerMask.NameToLayer (PlatformColor.ToString(thirdColour) + " BG"));
 		}
 	}
 	

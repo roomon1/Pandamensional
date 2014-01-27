@@ -10,12 +10,12 @@ public class PandaControl : MonoBehaviour {
 	public float damageKnockback = 3;
 	public float damageStunTime = .6f;
 
-	public bool isGrounded = true;
+	private bool isGrounded = true;
 	private int groundLayer;
 	private List<int> groundedLayers;
 
 	private Rigidbody2D r;
-	public bool facing = false;
+	private bool facing = false;
 	public float movement;
 
 	private PandaSpawner spawner;
@@ -74,7 +74,6 @@ public class PandaControl : MonoBehaviour {
 		while (true) {
 			movement = Input.GetAxis("Horizontal");
 
-			Debug.Log(movement);
 			if (movement != 0.0)
 				animator.SetBool("Running", true);
 			else

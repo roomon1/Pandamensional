@@ -60,7 +60,8 @@ public class Menu : MonoBehaviour {
 			buttons[selectedIndex].Activate();
 		}
 
-		if (Input.GetButtonDown("Cancel"))
+		if (Input.GetButtonDown("Cancel") &&
+		    !gameObject.tag.Equals("MainMenu"))
 		{
 			MenuButtons.SetActive(true);		
 			gameObject.SetActive(false);

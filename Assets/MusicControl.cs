@@ -33,7 +33,7 @@ public class MusicControl : MonoBehaviour {
 	}
 
 	void Start() {
-		StartCoroutine(Instance.ChangeTest());
+	//	StartCoroutine(Instance.ChangeTest());
 	}
 
 	public static void ChangeMusic(eColor c) {

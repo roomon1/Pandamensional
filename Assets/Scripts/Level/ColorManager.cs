@@ -26,6 +26,8 @@ public class ColorManager : MonoBehaviour {
 		m_Manager = GameObject.FindGameObjectWithTag("Level").GetComponent<LevelManager>();
 		cameras = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraBehaviour> ();
 		pandaColor = GameObject.FindGameObjectWithTag("Player").GetComponent<PandaColor> ();
+
+		ColorShift (eColor.White);
 	}
 
 	void Update () {
@@ -91,7 +93,8 @@ public class ColorManager : MonoBehaviour {
 
 	public void ColorShift(eColor newColor)
 	{
-		if (currentColor == newColor)
+		if (currentColor == newColor &&
+		    newColor != eColor.White)
 			return;
 		
 		currentColor = newColor;
@@ -110,11 +113,19 @@ public class ColorManager : MonoBehaviour {
 		    (nextNextColor == eColor.Yellow && !IsYellowUnlocked))
 			nextNextColor = eColor.White;
 
+		if (myNextColor == eColor.White
+			&& nextNextColor != eColor.White) 
+		{
+			myNextColor = nextNextColor;
+			nextNextColor = eColor.White;
+		}
+
 		Debug.Log("Next color = " + myNextColor.ToString());
-		Debug.Log("Next next color = " + colorAfter(myNextColor).ToString());
-		if (currentColor != eColor.White)
-			cameras.SetNewActiveColor (currentColor, myNextColor, colorAfter(myNextColor));
+		Debug.Log("Next next color = " + nextNextColor.ToString());
+		//if (currentColor != eColor.White)
+		cameras.SetNewActiveColor (currentColor, myNextColor, nextNextColor);
 		pandaColor.ColorShift(currentColor);
+		MusicControl.ChangeMusic (currentColor);
 	}
 
 	eColor nextColor(eColor curColor)

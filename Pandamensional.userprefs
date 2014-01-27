@@ -1,12 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Level\ColorManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CameraBehaviour.cs">
     <Files>
-      <File FileName="Assets\Scripts\Player\PandaControl.cs" Line="68" Column="3" />
-      <File FileName="Assets\Scripts\MainMenu\Menu.cs" Line="21" Column="18" />
-      <File FileName="Assets\Scripts\Level\LevelManager.cs" Line="109" Column="1" />
-      <File FileName="Assets\Scripts\Level\ColorManager.cs" Line="101" Column="36" />
-      <File FileName="Assets\Scripts\MainMenu\ButtonActions\Level1Action.cs" Line="12" Column="18" />
+      <File FileName="Assets\MusicControl.cs" Line="35" Column="16" />
+      <File FileName="Assets\Scripts\Player\PandaControl.cs" Line="136" Column="22" />
+      <File FileName="Assets\Scripts\Platform.cs" Line="109" Column="50" />
+      <File FileName="Assets\Scripts\CameraBehaviour.cs" Line="37" Column="30" />
+      <File FileName="Assets\Scripts\ColoredPlatform.cs" Line="15" Column="38" />
+      <File FileName="Assets\Scripts\Level\ColorManager.cs" Line="124" Column="62" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

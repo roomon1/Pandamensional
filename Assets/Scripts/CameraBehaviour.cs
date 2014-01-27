@@ -45,7 +45,7 @@ public class CameraBehaviour : MonoBehaviour {
 	
 	}
 
-	public void SetNewActiveColor(eColor activeColour, eColor secondColour = eColor.White, eColor thirdColour = eColor.White) {
+	public void SetNewActiveColor(eColor activeColour, eColor secondColour, eColor thirdColour) {
 		if (activeColour == eColor.White) {
 			foregroundCamera.cullingMask = baseCullMask;
 			foregroundCamera_BG.enabled = false;

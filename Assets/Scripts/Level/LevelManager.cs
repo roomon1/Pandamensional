@@ -68,6 +68,13 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	void Update () {
+		if (Input.GetButtonDown("Cancel"))
+		{
+			Application.LoadLevel("MainMenu");
+		}
+	}
+
 	public void SetColor(eColor newColor, bool redUnlocked, bool blueUnlocked, bool yellowUnlocked)
 	{
 		for (int i = 0; i < m_WhitePlatforms.Length; ++i)

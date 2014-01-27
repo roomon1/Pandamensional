@@ -35,31 +35,30 @@ public class PandaControl : MonoBehaviour {
 	}
 
 	void Update() {
-		float dist = 1.5f;
+		float dist = 1.25f;
+		float width = 0.5f;
 		bool movingUp = rigidbody2D.velocity.y > 0;
 		if (!movingUp)
 			return;
-		RaycastHit2D hit1 = Physics2D.Raycast(transform.position + 0.7f * Vector3.right, Vector2.up, dist, groundLayer);
-		RaycastHit2D hit2 = Physics2D.Raycast(transform.position,                        Vector2.up, dist, groundLayer);
-		RaycastHit2D hit3 = Physics2D.Raycast(transform.position + 0.7f * Vector3.left,  Vector2.up, dist, groundLayer);
+		Vector2[] rays = new Vector2[2];
+		Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+		rays[0] = pos + width * Vector2.right;
+		rays[1] = pos - width * Vector2.right;
 
-		RaycastHit2D hit;
-		if (hit1)
-			hit = hit1;
-		else if (hit2)
-			hit = hit2;
-		else if (hit3)
-			hit = hit3;
-		else
-			return;
-
-		if (hit)
+		for (int i = 0; i < rays.Length; ++i)
 		{
-			Platform hitPlat = hit.collider.gameObject.GetComponent<Platform>();
-			if (hitPlat != null && hitPlat.m_PassThrough)
-			{
-				hit.collider.enabled = !movingUp;
-				StartCoroutine("RestoreCollider", hit.collider);
+			Vector3 start = new Vector3(rays[i].x, rays[i].y);
+			Debug.DrawLine(start, start + Vector3.up * dist);
+			RaycastHit2D hit = Physics2D.Raycast(rays[i], Vector2.up, dist, groundLayer);
+			if (hit)
+			{	
+				Platform hitPlat = hit.collider.gameObject.GetComponent<Platform>();
+				if (hitPlat != null && hitPlat.m_PassThrough)
+				{
+					hit.collider.enabled = !movingUp;
+					StartCoroutine("RestoreCollider", hit.collider);
+					break;
+				}
 			}
 		}
 	}

@@ -98,6 +98,18 @@ public class ColorManager : MonoBehaviour {
 		
 		m_Manager.SetColor(currentColor, IsRedUnlocked, IsBlueUnlocked, IsYellowUnlocked);
 		eColor myNextColor = colorAfter(currentColor);
+		eColor nextNextColor = colorAfter(myNextColor);
+
+		if ((myNextColor == eColor.Blue && !IsBlueUnlocked) ||
+		    (myNextColor == eColor.Red && !IsRedUnlocked) ||
+		    (myNextColor == eColor.Yellow && !IsYellowUnlocked))
+			myNextColor = eColor.White;
+
+		if ((nextNextColor == eColor.Blue && !IsBlueUnlocked) ||
+		    (nextNextColor == eColor.Red && !IsRedUnlocked) ||
+		    (nextNextColor == eColor.Yellow && !IsYellowUnlocked))
+			nextNextColor = eColor.White;
+
 		Debug.Log("Next color = " + myNextColor.ToString());
 		Debug.Log("Next next color = " + colorAfter(myNextColor).ToString());
 		if (currentColor != eColor.White)

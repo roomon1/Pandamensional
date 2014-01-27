@@ -176,6 +176,8 @@ MonoBehaviour:
   m_Width: 25
   m_Height: 1
   m_Platform: {fileID: 450792551}
+  m_WhitePlatforms:
+  - {fileID: 450792551}
   m_ForceRestart: 0
 --- !u!4 &115815901
 Transform:

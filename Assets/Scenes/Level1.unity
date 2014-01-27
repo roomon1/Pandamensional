@@ -11253,7 +11253,7 @@ Camera:
     type: 2}
   m_PrefabInternal: {fileID: 892664095}
   m_GameObject: {fileID: 748224049}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 3
   m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
@@ -21737,7 +21737,7 @@ Camera:
     type: 2}
   m_PrefabInternal: {fileID: 892664095}
   m_GameObject: {fileID: 1407769258}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 4
   m_BackGroundColor: {r: .227941155, g: .227941155, b: .227941155, a: 0}
@@ -22842,7 +22842,7 @@ Camera:
     type: 2}
   m_PrefabInternal: {fileID: 892664095}
   m_GameObject: {fileID: 1472530775}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 3
   m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
@@ -22968,7 +22968,7 @@ Camera:
     type: 2}
   m_PrefabInternal: {fileID: 892664095}
   m_GameObject: {fileID: 1484841342}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 3
   m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
@@ -23396,7 +23396,7 @@ Camera:
     type: 2}
   m_PrefabInternal: {fileID: 892664095}
   m_GameObject: {fileID: 1497407567}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 3
   m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}

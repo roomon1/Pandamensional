@@ -55,9 +55,12 @@ public class PandaControl : MonoBehaviour {
 
 		if (hit)
 		{
-			Debug.Log(movingUp);
-			hit.collider.enabled = !movingUp;
-			StartCoroutine("RestoreCollider", hit.collider);
+			Platform hitPlat = hit.collider.gameObject.GetComponent<Platform>();
+			if (hitPlat != null && hitPlat.m_PassThrough)
+			{
+				hit.collider.enabled = !movingUp;
+				StartCoroutine("RestoreCollider", hit.collider);
+			}
 		}
 	}
 

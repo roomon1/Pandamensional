@@ -11,9 +11,11 @@ public class Platform : MonoBehaviour
 	
 	public float m_Width  = MIN_DIMENSION;
 	public float m_Height = MIN_DIMENSION;
-	
+
+	public bool m_PassThrough = false;
+
 	public ColoredPlatform m_Platform;
-	public ColoredPlatform[] m_WhitePlatforms;
+	private ColoredPlatform[] m_WhitePlatforms;
 	
 	public bool m_ForceRestart = false;
 	

@@ -1628,6 +1628,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: adb1264e8b138044194747f516b6521f, type: 2}
+      propertyPath: m_PassThrough
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: adb1264e8b138044194747f516b6521f, type: 2}
   m_RootGameObject: {fileID: 1209546754}
@@ -2888,9 +2892,8 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 1577428420}
-  m_WhitePlatforms:
-  - {fileID: 1577428420}
   m_ForceRestart: 0
 --- !u!1 &261044689
 GameObject:
@@ -5553,9 +5556,8 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 7.78999996
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 411004411}
-  m_WhitePlatforms:
-  - {fileID: 411004411}
   m_ForceRestart: 0
 --- !u!1 &383929482
 GameObject:
@@ -5994,9 +5996,8 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 1907481369}
-  m_WhitePlatforms:
-  - {fileID: 1907481369}
   m_ForceRestart: 0
 --- !u!1 &423458427
 GameObject:
@@ -6122,9 +6123,8 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 27
   m_Height: 21.8999996
+  m_PassThrough: 0
   m_Platform: {fileID: 97005221}
-  m_WhitePlatforms:
-  - {fileID: 97005221}
   m_ForceRestart: 0
 --- !u!1 &447315574
 GameObject:
@@ -7394,9 +7394,8 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 1845208675}
-  m_WhitePlatforms:
-  - {fileID: 1845208675}
   m_ForceRestart: 0
 --- !u!1 &519181716
 GameObject:
@@ -8295,6 +8294,10 @@ Prefab:
     - target: {fileID: 6100000, guid: adb1264e8b138044194747f516b6521f, type: 2}
       propertyPath: m_Center.y
       value: -.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: adb1264e8b138044194747f516b6521f, type: 2}
+      propertyPath: m_PassThrough
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: adb1264e8b138044194747f516b6521f, type: 2}
@@ -10272,9 +10275,8 @@ MonoBehaviour:
   m_Color: 2
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 1040495884}
-  m_WhitePlatforms:
-  - {fileID: 1040495884}
   m_ForceRestart: 0
 --- !u!1 &607358020
 GameObject:
@@ -10451,9 +10453,8 @@ MonoBehaviour:
   m_Color: 2
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 735807029}
-  m_WhitePlatforms:
-  - {fileID: 735807029}
   m_ForceRestart: 0
 --- !u!1 &624783115
 GameObject:
@@ -11147,9 +11148,8 @@ MonoBehaviour:
   m_Color: 1
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 580166189}
-  m_WhitePlatforms:
-  - {fileID: 580166189}
   m_ForceRestart: 0
 --- !u!1 &748224049
 GameObject:
@@ -11523,9 +11523,8 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 16.6800003
   m_Height: 9.10000038
+  m_PassThrough: 0
   m_Platform: {fileID: 1805295708}
-  m_WhitePlatforms:
-  - {fileID: 1805295708}
   m_ForceRestart: 0
 --- !u!1 &818588006
 GameObject:
@@ -14235,6 +14234,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: adb1264e8b138044194747f516b6521f, type: 2}
+      propertyPath: m_PassThrough
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: adb1264e8b138044194747f516b6521f, type: 2}
   m_RootGameObject: {fileID: 1159216110}
@@ -14881,9 +14884,8 @@ MonoBehaviour:
   m_Color: 1
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 1968825624}
-  m_WhitePlatforms:
-  - {fileID: 1968825624}
   m_ForceRestart: 0
 --- !u!1 &1010739965
 GameObject:
@@ -15431,9 +15433,8 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 15
   m_Height: 9
+  m_PassThrough: 0
   m_Platform: {fileID: 790659735}
-  m_WhitePlatforms:
-  - {fileID: 790659735}
   m_ForceRestart: 0
 --- !u!1 &1091878934
 GameObject:
@@ -15686,9 +15687,8 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 4
   m_Height: 71.7200012
+  m_PassThrough: 0
   m_Platform: {fileID: 2131393769}
-  m_WhitePlatforms:
-  - {fileID: 2131393769}
   m_ForceRestart: 0
 --- !u!1 &1102633234
 GameObject:
@@ -15923,9 +15923,8 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 7.78999996
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 1102633236}
-  m_WhitePlatforms:
-  - {fileID: 1102633236}
   m_ForceRestart: 0
 --- !u!1 &1140184344
 GameObject:
@@ -16102,9 +16101,8 @@ MonoBehaviour:
   m_Color: 1
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 1
   m_Platform: {fileID: 2113103671}
-  m_WhitePlatforms:
-  - {fileID: 2113103671}
   m_ForceRestart: 0
 --- !u!1 &1166623664
 GameObject:
@@ -16332,9 +16330,8 @@ MonoBehaviour:
   m_Color: 1
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 1810589446}
-  m_WhitePlatforms:
-  - {fileID: 1810589446}
   m_ForceRestart: 0
 --- !u!1 &1192452640
 GameObject:
@@ -16592,9 +16589,8 @@ MonoBehaviour:
   m_Color: 1
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 1
   m_Platform: {fileID: 884521743}
-  m_WhitePlatforms:
-  - {fileID: 884521743}
   m_ForceRestart: 0
 --- !u!1 &1212119679
 GameObject:
@@ -19779,9 +19775,8 @@ MonoBehaviour:
   m_Color: 1
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 72285272}
-  m_WhitePlatforms:
-  - {fileID: 72285272}
   m_ForceRestart: 0
 --- !u!1 &1328692544
 GameObject:
@@ -21366,9 +21361,8 @@ MonoBehaviour:
   m_Color: 2
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 80661159}
-  m_WhitePlatforms:
-  - {fileID: 80661159}
   m_ForceRestart: 0
 --- !u!1 &1407769258
 GameObject:
@@ -22833,9 +22827,8 @@ MonoBehaviour:
   m_Color: 1
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 344018736}
-  m_WhitePlatforms:
-  - {fileID: 344018736}
   m_ForceRestart: 0
 --- !u!1 &1493278182
 GameObject:
@@ -22961,9 +22954,8 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 4
   m_Height: 71.7200012
+  m_PassThrough: 0
   m_Platform: {fileID: 1480291882}
-  m_WhitePlatforms:
-  - {fileID: 1480291882}
   m_ForceRestart: 0
 --- !u!1 &1497407567
 GameObject:
@@ -23702,6 +23694,10 @@ Prefab:
       propertyPath: m_Center.y
       value: -.5
       objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: adb1264e8b138044194747f516b6521f, type: 2}
+      propertyPath: m_PassThrough
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: adb1264e8b138044194747f516b6521f, type: 2}
   m_RootGameObject: {fileID: 2022622520}
@@ -24355,9 +24351,8 @@ MonoBehaviour:
   m_Color: 1
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 278641227}
-  m_WhitePlatforms:
-  - {fileID: 278641227}
   m_ForceRestart: 0
 --- !u!1 &1643332994
 GameObject:
@@ -24574,9 +24569,8 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 11.4399996
   m_Height: 3.25999999
+  m_PassThrough: 0
   m_Platform: {fileID: 1524511017}
-  m_WhitePlatforms:
-  - {fileID: 1524511017}
   m_ForceRestart: 0
 --- !u!1 &1654573908
 GameObject:
@@ -26346,9 +26340,8 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 87.7099991
   m_Height: 8.5
+  m_PassThrough: 0
   m_Platform: {fileID: 1046871735}
-  m_WhitePlatforms:
-  - {fileID: 1046871735}
   m_ForceRestart: 0
 --- !u!1 &1845208673
 GameObject:
@@ -27609,9 +27602,8 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 1
   m_Platform: {fileID: 955039395}
-  m_WhitePlatforms:
-  - {fileID: 955039395}
   m_ForceRestart: 0
 --- !u!1 &1923579257
 GameObject:
@@ -27839,9 +27831,8 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 795931240}
-  m_WhitePlatforms:
-  - {fileID: 795931240}
   m_ForceRestart: 0
 --- !u!1 &1949785074
 GameObject:
@@ -29270,9 +29261,8 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 1
   m_Platform: {fileID: 1330519488}
-  m_WhitePlatforms:
-  - {fileID: 1330519488}
   m_ForceRestart: 0
 --- !u!1 &2023399057
 GameObject:
@@ -30024,6 +30014,7 @@ GameObject:
   - 114: {fileID: 2039967019}
   - 114: {fileID: 2039967018}
   - 114: {fileID: 2039967017}
+  - 95: {fileID: 2039967024}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -30136,6 +30127,21 @@ Transform:
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!95 &2039967024
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9500000, guid: bfb26e62079ec3f4f957f2e3260276a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 313177595}
+  m_GameObject: {fileID: 2039967016}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b4aa0db4e6b07d4391e0991665e9c7f, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 0
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &2041637984
 GameObject:
   m_ObjectHideFlags: 0
@@ -31445,9 +31451,8 @@ MonoBehaviour:
   m_Color: 2
   m_Width: 4
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 175318008}
-  m_WhitePlatforms:
-  - {fileID: 175318008}
   m_ForceRestart: 0
 --- !u!1 &2126948820
 GameObject:

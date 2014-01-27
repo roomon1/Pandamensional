@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PandaControl : MonoBehaviour {
 
@@ -11,11 +12,14 @@ public class PandaControl : MonoBehaviour {
 
 	private bool isGrounded = true;
 	private int groundLayer;
+	private List<int> groundedLayers;
 
 	private Rigidbody2D r;
-	private bool facing = true;
+	private bool facing = false;
+	public float movement;
 
 	private PandaSpawner spawner;
+	private Animator animator;
 
 	void Awake () {
 		r = rigidbody2D;
@@ -25,38 +29,91 @@ public class PandaControl : MonoBehaviour {
 	}
 
 	void Start () {
+		animator = gameObject.GetComponent<Animator>();
 		StartCoroutine("MovementInput");	
 		StartCoroutine("PlayerAttacked");
 	}
 
+	void Update() {
+		float dist = 1.25f;
+		float width = 0.5f;
+		bool movingUp = rigidbody2D.velocity.y > 0;
+		if (!movingUp)
+			return;
+		Vector2[] rays = new Vector2[2];
+		Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+		rays[0] = pos + width * Vector2.right;
+		rays[1] = pos - width * Vector2.right;
+
+		for (int i = 0; i < rays.Length; ++i)
+		{
+			Vector3 start = new Vector3(rays[i].x, rays[i].y);
+			Debug.DrawLine(start, start + Vector3.up * dist);
+			RaycastHit2D hit = Physics2D.Raycast(rays[i], Vector2.up, dist, groundLayer);
+			if (hit)
+			{	
+				Platform hitPlat = hit.collider.gameObject.GetComponent<Platform>();
+				if (hitPlat != null && hitPlat.m_PassThrough)
+				{
+					hit.collider.enabled = !movingUp;
+					StartCoroutine("RestoreCollider", hit.collider);
+					break;
+				}
+			}
+		}
+	}
+
+	IEnumerator RestoreCollider(Collider2D col)
+	{
+		yield return new WaitForSeconds(0.15f);
+		col.enabled = true;
+	}
+
 	IEnumerator MovementInput() {
-		float movement;
 
 		while (true) {
 			movement = Input.GetAxis("Horizontal");
 
-			r.velocity = new Vector2(movement * moveSpeed, r.velocity.y);
-
-			if (movement > 0 && facing == false) {
-				transform.localScale = new Vector3(-1,1,1);
-				facing = true;
-			}
-			else if (movement < 0 && facing == true) {
+			if (movement != 0.0)
+				animator.SetBool("Running", true);
+			else
+				animator.SetBool("Running", false);
+			
+			if (movement > 0 && facing == true) {
 				transform.localScale = Vector3.one;
 				facing = false;
 			}
+			else if (movement < 0 && facing == false) {
+				transform.localScale = new Vector3(-1,1,1);
+				facing = true;
+			}
 
-			if (Physics2D.Raycast(transform.position, -Vector2.up, 1.1f, groundLayer))
+			if (!Physics2D.Raycast(transform.position + Vector3.up, facing ? Vector2.right : -Vector2.right, .75f, groundLayer) &&
+			    !Physics2D.Raycast(transform.position, facing ? Vector2.right : -Vector2.right, .75f, groundLayer) &&
+			    !Physics2D.Raycast(transform.position - Vector3.up, facing ? Vector2.right : -Vector2.right, .75f, groundLayer)) {
+				r.velocity = new Vector2(movement * moveSpeed, r.velocity.y);
+			}
+			else {
+				r.velocity = new Vector2(0, r.velocity.y);
+			}
+
+			if (Physics2D.Raycast(transform.position + Vector3.right * .5f, -Vector2.up, 1.1f, groundLayer) ||
+			    Physics2D.Raycast(transform.position + Vector3.left * .5f, -Vector2.up, 1.1f, groundLayer))
+			{
 				isGrounded = true;
+				animator.SetBool("Jumping", false);
+			}
 			else 
+			{
 				isGrounded = false;
-
-			if (Input.GetButtonDown("Jump"))
-				Debug.Log("Grounded = " + isGrounded.ToString());
+				animator.SetBool("Jumping", true);
+			}
+				
 
 			if (Input.GetButtonDown("Jump") && isGrounded) {
 				r.velocity = new Vector2(r.velocity.x, jumpSpeed);
 				isGrounded = false;
+				animator.SetBool("Jumping", true); 
 			}
 
 			yield return null;

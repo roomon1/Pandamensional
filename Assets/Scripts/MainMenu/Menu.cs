@@ -27,7 +27,7 @@ public class Menu : MonoBehaviour {
 	void handleMovement()
 	{
 		if (!verticalPressed &&
-		    Input.GetAxis("Vertical") > 0.0f)
+		    Input.GetAxis("Vertical") < 0.0f)
 		{
 			buttons[selectedIndex].IsSelected = false;
 			selectedIndex++;
@@ -38,7 +38,7 @@ public class Menu : MonoBehaviour {
 		}
 		
 		if (!verticalPressed &&
-		    Input.GetAxis("Vertical") < 0.0f)
+		    Input.GetAxis("Vertical") > 0.0f)
 		{
 			buttons[selectedIndex].IsSelected = false;
 			selectedIndex--;
@@ -60,7 +60,8 @@ public class Menu : MonoBehaviour {
 			buttons[selectedIndex].Activate();
 		}
 
-		if (Input.GetButtonDown("Cancel"))
+		if (Input.GetButtonDown("Cancel") &&
+		    !gameObject.tag.Equals("MainMenu"))
 		{
 			MenuButtons.SetActive(true);		
 			gameObject.SetActive(false);

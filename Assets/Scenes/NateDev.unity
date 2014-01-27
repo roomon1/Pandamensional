@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Color: 0
   m_Width: 25
   m_Height: 1
+  m_PassThrough: 0
   m_Platform: {fileID: 450792551}
   m_ForceRestart: 0
 --- !u!4 &115815901
@@ -1282,7 +1283,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 8
   m_Depth: 3
   m_CullingMask:
     serializedVersion: 2
@@ -1695,7 +1696,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 8
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2

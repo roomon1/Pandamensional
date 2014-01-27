@@ -45,14 +45,38 @@ public class CameraBehaviour : MonoBehaviour {
 	
 	}
 
-	public void SetNewActiveColor(eColor activeColour, eColor secondColour, eColor thirdColour) {
-		foregroundCamera.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(activeColour)));
-		secondCamera.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(secondColour)));
-		thirdCamera.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(thirdColour)));
-		
-		foregroundCamera_BG.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(activeColour) + " BG"));
-		secondCamera_BG.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(secondColour) + " BG"));
-		thirdCamera_BG.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(thirdColour) + " BG"));
+	public void SetNewActiveColor(eColor activeColour, eColor secondColour = eColor.White, eColor thirdColour = eColor.White) {
+		if (activeColour == eColor.White) {
+			foregroundCamera.cullingMask = baseCullMask;
+			foregroundCamera_BG.enabled = false;
+		}
+		else {
+			foregroundCamera.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(activeColour)));
+			foregroundCamera_BG.enabled = true;
+			foregroundCamera_BG.cullingMask = (1 << LayerMask.NameToLayer (PlatformColor.ToString(activeColour) + " BG"));
+		}
+
+		if (secondColour == eColor.White) {
+			secondCamera.enabled = false;
+			secondCamera_BG.enabled = false;
+		}
+		else {
+			secondCamera.enabled = true;
+			secondCamera.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(secondColour)));
+			secondCamera_BG.enabled = true;
+			secondCamera_BG.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(secondColour) + " BG"));
+		}
+
+		if (thirdColour == eColor.White) {
+			thirdCamera.enabled = false;
+			thirdCamera_BG.enabled = false;
+		}
+		else {
+			thirdCamera.enabled = true;
+			thirdCamera.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(thirdColour)));
+			thirdCamera_BG.enabled = false;
+			thirdCamera_BG.cullingMask = baseCullMask + (1 << LayerMask.NameToLayer (PlatformColor.ToString(thirdColour) + " BG"));
+		}
 	}
 	
 	// Update is called once per frame

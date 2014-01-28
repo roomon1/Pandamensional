@@ -88,14 +88,21 @@ public class PandaControl : MonoBehaviour {
 				facing = true;
 			}
 
-			if (!Physics2D.Raycast(transform.position + Vector3.up, facing ? Vector2.right : -Vector2.right, .75f, groundLayer) &&
-			    !Physics2D.Raycast(transform.position, facing ? Vector2.right : -Vector2.right, .75f, groundLayer) &&
-			    !Physics2D.Raycast(transform.position - Vector3.up, facing ? Vector2.right : -Vector2.right, .75f, groundLayer)) {
-				r.velocity = new Vector2(movement * moveSpeed, r.velocity.y);
-			}
-			else {
+			Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+			Vector2[] rays = new Vector2[3];
+			rays[0] = pos + Vector2.up;
+			rays[1] = pos;
+			rays[2] = pos - Vector2.up;
+			Vector2 rayDir = facing ? -Vector2.right : Vector2.right;
+			bool hit = false;
+			for (int i = 0; i < rays.Length && !hit; ++i)
+				if (Physics2D.Raycast(rays[i], rayDir, 0.75f, groundLayer))
+					hit = true;
+
+			if (hit)
 				r.velocity = new Vector2(0, r.velocity.y);
-			}
+			else
+				r.velocity = new Vector2(movement * moveSpeed, r.velocity.y);
 
 			if (Physics2D.Raycast(transform.position + Vector3.right * .5f, -Vector2.up, 1.1f, groundLayer) ||
 			    Physics2D.Raycast(transform.position + Vector3.left * .5f, -Vector2.up, 1.1f, groundLayer))

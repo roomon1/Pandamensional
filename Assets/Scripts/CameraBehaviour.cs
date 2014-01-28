@@ -79,7 +79,7 @@ public class CameraBehaviour : MonoBehaviour {
 		else {
 			thirdCamera.enabled = true;
 			thirdCamera.cullingMask = baseCullMask.value | (1 << LayerMask.NameToLayer (PlatformColor.ToString(thirdColour)));
-			thirdCamera_BG.enabled = false;
+			thirdCamera_BG.enabled = true;
 			thirdCamera_BG.cullingMask = baseCullMask.value | (1 << LayerMask.NameToLayer (PlatformColor.ToString(thirdColour) + " BG"));
 		}
 	}

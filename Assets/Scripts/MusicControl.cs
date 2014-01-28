@@ -42,15 +42,15 @@ public class MusicControl : MonoBehaviour {
 		switch (Instance.currentColor) {
 		case "Red":
 			Instance.nextclip = Instance.redmusic;
-			Instance.SFX.PlayOneShot(Instance.redmusictran,.8f);
+			//Instance.SFX.PlayOneShot(Instance.redmusictran,.8f);
 			break;
 		case "Blue":
 			Instance.nextclip = Instance.bluemusic;
-			Instance.SFX.PlayOneShot(Instance.bluemusictran,.8f);
+			//Instance.SFX.PlayOneShot(Instance.bluemusictran,.8f);
 			break;
 		case "Yellow":
 			Instance.nextclip = Instance.yellowmusic;
-			Instance.SFX.PlayOneShot(Instance.yellowmusictran,.8f);
+			//Instance.SFX.PlayOneShot(Instance.yellowmusictran,.8f);
 			break;
 		case "White":
 			Instance.nextclip = Instance.whitemusic;

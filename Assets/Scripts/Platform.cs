@@ -46,13 +46,13 @@ public class Platform : MonoBehaviour
 	{
 		if (m_Color == eColor.White && Application.isPlaying)
 		{
-			m_WhitePlatforms = new ColoredPlatform[3];
+			m_WhitePlatforms = new ColoredPlatform[4];
 			m_WhitePlatforms[0] = m_Platform;
 			for (int  i = 1; i < m_WhitePlatforms.Length; ++i)
 			{
 				m_WhitePlatforms[i] = (ColoredPlatform)Instantiate(m_Platform);
 				m_WhitePlatforms[i].transform.parent = m_Platform.transform.parent;
-				m_WhitePlatforms[i].transform.localPosition = m_Platform.transform.localPosition;
+				m_WhitePlatforms[i].transform.localPosition = m_Platform.transform.localPosition + Vector3.forward * i;
 			}
 		}
 		else
@@ -107,6 +107,7 @@ public class Platform : MonoBehaviour
 				SetColor(eColor.Red,    m_WhitePlatforms[0]);
 				SetColor(eColor.Blue,   m_WhitePlatforms[1]);
 				SetColor(eColor.Yellow, m_WhitePlatforms[2]);
+				SetColor(eColor.White,  m_WhitePlatforms[3]);
 			}
 			else
 				SetColor(newColor, m_Platform);

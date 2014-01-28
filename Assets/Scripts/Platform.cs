@@ -21,6 +21,7 @@ public class Platform : MonoBehaviour
 	
 	private float m_CurrentWidth  = -1f;
 	private float m_CurrentHeight = -1f;
+	private float m_SnapResolution = 0.5f;
 	
 	private BoxCollider2D m_Collider;
 
@@ -67,8 +68,8 @@ public class Platform : MonoBehaviour
 	public void Update()
 	{
 		if (m_ForceRestart ||
-		    m_Width != m_CurrentWidth ||
-		    m_Height != m_CurrentHeight)
+		    m_CurrentWidth  != Snap(m_Width) ||
+		    m_CurrentHeight != Snap(m_Height))
 		{
 			m_Width  = Mathf.Max(m_Width,  MIN_DIMENSION);
 			m_Height = Mathf.Max(m_Height, MIN_DIMENSION);
@@ -79,8 +80,8 @@ public class Platform : MonoBehaviour
 	
 	private void Restart()
 	{
-		m_CurrentWidth = m_Width;
-		m_CurrentHeight = m_Height;
+		m_CurrentWidth = Snap(m_Width);
+		m_CurrentHeight = Snap(m_Height);
 		
 		if (m_ForceRestart)
 			m_Platform.ForceRestart();
@@ -139,5 +140,16 @@ public class Platform : MonoBehaviour
 			foreach (Transform child in t)
 				children.Enqueue (child);
 		}
+	}
+
+	public void SetSnapResolution(float newResolution)
+	{
+		if (newResolution > 0f)
+			m_SnapResolution = newResolution;
+	}
+
+	private float Snap(float input)
+	{
+		return m_SnapResolution * Mathf.Round(input / m_SnapResolution);
 	}
 }

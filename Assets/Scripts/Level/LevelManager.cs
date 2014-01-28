@@ -2,9 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[ExecuteInEditMode]
 public class LevelManager : MonoBehaviour {
 	public GameObject LevelRespawn;
 	PandaSpawner pandaSpawner;
+
+	public float m_PlatformSnap = 0.5f;
+	private float m_CurrentPlatformSnap = 0.5f;
 
 	private Platform[] m_WhitePlatforms;
 	private Platform[] m_RedPlatforms;
@@ -13,6 +17,9 @@ public class LevelManager : MonoBehaviour {
 
 	void Awake()
 	{
+		if (!Application.isPlaying)
+			return;
+
 		if (pandaSpawner == null)
 			pandaSpawner = GameObject.FindGameObjectWithTag("Player").GetComponent<PandaSpawner>();
 		pandaSpawner.SetLevelSpawn(LevelRespawn);
@@ -26,6 +33,7 @@ public class LevelManager : MonoBehaviour {
 		white = red = blue = yellow = 0;
 		for (int i = 0; i < plats.Length; ++i)
 		{
+			plats[i].SetSnapResolution(m_CurrentPlatformSnap);
 			switch (plats[i].m_Color)
 			{
 			case eColor.White:
@@ -72,6 +80,22 @@ public class LevelManager : MonoBehaviour {
 		if (Input.GetButtonDown("Cancel"))
 		{
 			Application.LoadLevel("MainMenu");
+		}
+
+		if (!Application.isPlaying)
+			return;
+
+		if (m_PlatformSnap != m_CurrentPlatformSnap)
+		{
+			m_CurrentPlatformSnap = m_PlatformSnap;
+			for (int i = 0; i < m_WhitePlatforms.Length; ++i)
+				m_WhitePlatforms[i].SetSnapResolution(m_CurrentPlatformSnap);
+			for (int i = 0; i < m_RedPlatforms.Length; ++i)
+				m_RedPlatforms[i].SetSnapResolution(m_CurrentPlatformSnap);
+			for (int i = 0; i < m_BluePlatforms.Length; ++i)
+				m_BluePlatforms[i].SetSnapResolution(m_CurrentPlatformSnap);
+			for (int i = 0; i < m_YellowPlatforms.Length; ++i)
+				m_YellowPlatforms[i].SetSnapResolution(m_CurrentPlatformSnap);
 		}
 	}
 

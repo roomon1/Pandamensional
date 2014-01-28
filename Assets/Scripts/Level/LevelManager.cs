@@ -77,23 +77,24 @@ public class LevelManager : MonoBehaviour {
 
 	public void SetColor(eColor newColor, bool redUnlocked, bool blueUnlocked, bool yellowUnlocked)
 	{
+		bool anyUnlocked = redUnlocked || blueUnlocked || yellowUnlocked;
 		for (int i = 0; i < m_WhitePlatforms.Length; ++i)
-			m_WhitePlatforms[i].SetActiveColor(newColor);
+			m_WhitePlatforms[i].SetActiveColor(newColor, anyUnlocked);
 
 		for (int i = 0; i < m_RedPlatforms.Length; ++i)
 		{
 			m_RedPlatforms[i].SetUnlocked(redUnlocked);
-			m_RedPlatforms[i].SetActiveColor(newColor);
+			m_RedPlatforms[i].SetActiveColor(newColor, anyUnlocked);
 		}
 		for (int i = 0; i < m_BluePlatforms.Length; ++i)
 		{
 			m_BluePlatforms[i].SetUnlocked(blueUnlocked);
-			m_BluePlatforms[i].SetActiveColor(newColor);
+			m_BluePlatforms[i].SetActiveColor(newColor, anyUnlocked);
 		}
 		for (int i = 0; i < m_YellowPlatforms.Length; ++i)
 		{
 			m_YellowPlatforms[i].SetUnlocked(yellowUnlocked);
-			m_YellowPlatforms[i].SetActiveColor(newColor);
+			m_YellowPlatforms[i].SetActiveColor(newColor, anyUnlocked);
 		}
 	}
 

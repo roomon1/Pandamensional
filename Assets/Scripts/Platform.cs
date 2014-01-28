@@ -98,23 +98,23 @@ public class Platform : MonoBehaviour
 		m_Unlocked = unlocked;
 	}
 
-	public void SetActiveColor(eColor newColor)
+	public void SetActiveColor(eColor newColor, bool anyColorUnlocked = false)
 	{
-		if (m_Color == newColor)
+		if (m_Color == eColor.White && Application.isPlaying)
 		{
-			if (m_Color == eColor.White && Application.isPlaying)
-			{
+			if (anyColorUnlocked)
 				SetColor(eColor.Red,    m_WhitePlatforms[0]);
-				SetColor(eColor.Blue,   m_WhitePlatforms[1]);
-				SetColor(eColor.Yellow, m_WhitePlatforms[2]);
-			}
 			else
-				SetColor(newColor, m_Platform);
+				SetColor(eColor.White,  m_WhitePlatforms[0]);
+			SetColor(eColor.Blue,   m_WhitePlatforms[1]);
+			SetColor(eColor.Yellow, m_WhitePlatforms[2]);
 		}
+		else if (m_Color == newColor)
+			SetColor(newColor, m_Platform);
 		m_Collider.enabled = m_Unlocked && (m_Color == eColor.White || m_Color == newColor);
 	}
 
-	public void SetColor(eColor newColor, ColoredPlatform platform)
+	private void SetColor(eColor newColor, ColoredPlatform platform)
 	{
 		if (!m_Unlocked)
 			newColor = eColor.Black;

@@ -448,7 +448,7 @@ Camera:
   m_Depth: 6
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4293922815
+    m_Bits: 4293926911
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
@@ -572,9 +572,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 2, z: -10}
-  yBounds: {x: -3, y: 100}
-  xBounds: {x: -5, y: 100}
-  useBounds: 0
+  yBounds: {x: -5, y: 100}
+  xBounds: {x: 2, y: 110}
+  useBounds: 1
+  baseCullMask:
+    serializedVersion: 2
+    m_Bits: 4293922815
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

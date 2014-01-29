@@ -21,6 +21,8 @@ public class PandaControl : MonoBehaviour {
 	private PandaSpawner spawner;
 	private Animator animator;
 
+	private List<Platform> passedThroughPlatforms;
+
 	void Awake () {
 		r = rigidbody2D;
 		groundLayer = (1 << LayerMask.NameToLayer ("White")) + (1 << LayerMask.NameToLayer ("Red")) + (1 << LayerMask.NameToLayer ("Blue")) + (1 << LayerMask.NameToLayer ("Yellow"));
@@ -32,41 +34,49 @@ public class PandaControl : MonoBehaviour {
 		animator = gameObject.GetComponent<Animator>();
 		StartCoroutine("MovementInput");	
 		StartCoroutine("PlayerAttacked");
+
+		passedThroughPlatforms = new List<Platform>();
 	}
 
 	void Update() {
-		float dist = 1.25f;
+		float dist = 1.5f;
 		float width = 0.5f;
 		bool movingUp = rigidbody2D.velocity.y > 0;
-		if (!movingUp)
-			return;
-		Vector2[] rays = new Vector2[2];
-		Vector2 pos = new Vector2(transform.position.x, transform.position.y);
-		rays[0] = pos + width * Vector2.right;
-		rays[1] = pos - width * Vector2.right;
-
-		for (int i = 0; i < rays.Length; ++i)
+		if (movingUp)
 		{
-			Vector3 start = new Vector3(rays[i].x, rays[i].y);
-			Debug.DrawLine(start, start + Vector3.up * dist);
-			RaycastHit2D hit = Physics2D.Raycast(rays[i], Vector2.up, dist, groundLayer);
-			if (hit)
-			{	
-				Platform hitPlat = hit.collider.gameObject.GetComponent<Platform>();
-				if (hitPlat != null && hitPlat.m_PassThrough)
-				{
-					hit.collider.enabled = !movingUp;
-					StartCoroutine("RestoreCollider", hit.collider);
-					break;
+			Vector2[] rays = new Vector2[2];
+			Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+			rays[0] = pos + width * Vector2.right;
+			rays[1] = pos - width * Vector2.right;
+			
+			for (int i = 0; i < rays.Length; ++i)
+			{
+				Vector3 start = new Vector3(rays[i].x, rays[i].y);
+				Debug.DrawLine(start, start + Vector3.up * dist);
+				RaycastHit2D hit = Physics2D.Raycast(rays[i], Vector2.up, dist, groundLayer);
+				if (hit)
+				{	
+					Platform hitPlat = hit.collider.gameObject.GetComponent<Platform>();
+					if (hitPlat != null && hitPlat.m_PassThrough)
+					{
+						Debug.Log("disas");
+						hitPlat.PassThrough();
+						passedThroughPlatforms.Add(hitPlat);
+						break;
+					}
 				}
 			}
 		}
-	}
-
-	IEnumerator RestoreCollider(Collider2D col)
-	{
-		yield return new WaitForSeconds(0.15f);
-		col.enabled = true;
+		else
+		{
+			if (passedThroughPlatforms.Count > 0)
+			{
+				Debug.Log("en" + passedThroughPlatforms.Count);
+				for (int i = 0; i < passedThroughPlatforms.Count; ++i)
+					passedThroughPlatforms[i].PassThroughDone();
+				passedThroughPlatforms.Clear();
+			}
+		}
 	}
 
 	IEnumerator MovementInput() {

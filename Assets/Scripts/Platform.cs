@@ -11,6 +11,7 @@ public class Platform : MonoBehaviour
 	
 	public float m_Width  = MIN_DIMENSION;
 	public float m_Height = MIN_DIMENSION;
+	public Transform m_SnappedTransform;
 
 	public bool m_PassThrough = false;
 
@@ -25,7 +26,9 @@ public class Platform : MonoBehaviour
 	
 	private BoxCollider2D m_Collider;
 
+	private bool m_PassingThrough = false;
 	private bool m_Unlocked = false;
+	private bool m_IsColorActive = false;
 	
 	void Awake()
 	{
@@ -34,7 +37,13 @@ public class Platform : MonoBehaviour
 			Debug.LogError(string.Format("Platform prefab is not set for platform at {0}", transform.position));
 			return;
 		}
-		
+
+		if (m_SnappedTransform == null)
+		{
+			Debug.LogError(string.Format("Snap-transform is not set for platform at {0}", transform.position));
+			return;
+		}
+
 		m_Platform.SetSize(m_CurrentHeight, m_CurrentWidth);
 		
 		m_Collider = GetComponent<BoxCollider2D>();
@@ -69,7 +78,9 @@ public class Platform : MonoBehaviour
 	{
 		if (m_ForceRestart ||
 		    m_CurrentWidth  != Snap(m_Width) ||
-		    m_CurrentHeight != Snap(m_Height))
+		    m_CurrentHeight != Snap(m_Height) ||
+		    transform.position.x - m_SnappedTransform.localPosition.x != Snap(transform.position.x) ||
+		    transform.position.y - m_SnappedTransform.localPosition.y != Snap(transform.position.y))
 		{
 			m_Width  = Mathf.Max(m_Width,  MIN_DIMENSION);
 			m_Height = Mathf.Max(m_Height, MIN_DIMENSION);
@@ -83,15 +94,32 @@ public class Platform : MonoBehaviour
 		m_CurrentWidth = Snap(m_Width);
 		m_CurrentHeight = Snap(m_Height);
 		
+		Vector2 newPos = Vector2.zero;
+		newPos.x = -(Snap(transform.position.x) - transform.position.x);
+		newPos.y = -(Snap(transform.position.y) - transform.position.y);
+		m_SnappedTransform.localPosition = new Vector3(newPos.x, newPos.y);
+
 		if (m_ForceRestart)
 			m_Platform.ForceRestart();
 		for (int i = 0; i < m_WhitePlatforms.Length; ++i)
 			m_WhitePlatforms[i].SetSize(m_CurrentHeight, m_CurrentWidth);
 		
 		m_Collider.size = new Vector2(m_CurrentWidth, m_CurrentHeight);
-		m_Collider.center = new Vector2(m_CurrentWidth / 2f, -m_CurrentHeight / 2f);
+		m_Collider.center = new Vector2(m_CurrentWidth / 2f, -m_CurrentHeight / 2f) + newPos;
 		
 		SetActiveColor(m_Color);
+	}
+
+	public void PassThrough()
+	{
+		m_PassingThrough = true;
+		UpdateCollider();
+	}
+
+	public void PassThroughDone()
+	{
+		m_PassingThrough = false;
+		UpdateCollider();
 	}
 
 	public void SetUnlocked(bool unlocked)
@@ -112,7 +140,13 @@ public class Platform : MonoBehaviour
 		}
 		else if (m_Color == newColor)
 			SetColor(newColor, m_Platform);
-		m_Collider.enabled = m_Unlocked && (m_Color == eColor.White || m_Color == newColor);
+		m_IsColorActive = m_Color == eColor.White || m_Color == newColor;
+		UpdateCollider();
+	}
+
+	private void UpdateCollider()
+	{
+		m_Collider.enabled = !m_PassingThrough && m_Unlocked && m_IsColorActive;
 	}
 
 	private void SetColor(eColor newColor, ColoredPlatform platform)

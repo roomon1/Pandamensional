@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,6 +12,7 @@ public class Platform : MonoBehaviour
 	public float m_Width  = MIN_DIMENSION;
 	public float m_Height = MIN_DIMENSION;
 	public Transform m_SnappedTransform;
+	public Transform m_SnapBoundary;
 
 	public bool m_PassThrough = false;
 
@@ -43,6 +44,20 @@ public class Platform : MonoBehaviour
 			Debug.LogError(string.Format("Snap-transform is not set for platform at {0}", transform.position));
 			return;
 		}
+		if (m_SnapBoundary == null)
+		{
+			Debug.LogError(string.Format("Snap-boundary is not set for platform at {0}", transform.position));
+			return;
+		}
+
+		if (Application.isPlaying)
+		{
+			GameObject.Destroy(m_SnapBoundary.gameObject);
+		}
+		else
+		{
+			m_SnapBoundary.transform.localPosition += Vector3.back;
+		}
 
 		m_Platform.SetSize(m_CurrentHeight, m_CurrentWidth);
 		
@@ -60,9 +75,8 @@ public class Platform : MonoBehaviour
 			m_WhitePlatforms[0] = m_Platform;
 			for (int  i = 1; i < m_WhitePlatforms.Length; ++i)
 			{
-				m_WhitePlatforms[i] = (ColoredPlatform)Instantiate(m_Platform);
+				m_WhitePlatforms[i] = (ColoredPlatform)Instantiate(m_Platform, m_Platform.transform.position, Quaternion.identity);
 				m_WhitePlatforms[i].transform.parent = m_Platform.transform.parent;
-				m_WhitePlatforms[i].transform.localPosition = m_Platform.transform.localPosition;
 			}
 		}
 		else
@@ -79,25 +93,28 @@ public class Platform : MonoBehaviour
 		if (m_ForceRestart ||
 		    m_CurrentWidth  != Snap(m_Width) ||
 		    m_CurrentHeight != Snap(m_Height) ||
-		    transform.position.x - m_SnappedTransform.localPosition.x != Snap(transform.position.x) ||
-		    transform.position.y - m_SnappedTransform.localPosition.y != Snap(transform.position.y))
+		    m_SnappedTransform.position.x != Snap(transform.position.x) ||
+		    m_SnappedTransform.position.y != Snap(transform.position.y))
 		{
 			m_Width  = Mathf.Max(m_Width,  MIN_DIMENSION);
 			m_Height = Mathf.Max(m_Height, MIN_DIMENSION);
+			if (!Application.isPlaying)
+			{
+				m_SnapBoundary.transform.localScale = new Vector3(m_CurrentWidth + 2 * m_SnapResolution, m_CurrentHeight + 2 * m_SnapResolution);
+				m_SnapBoundary.transform.localPosition = new Vector3(m_CurrentWidth / 2f, -m_CurrentHeight / 2f);
+			}
 			Restart();
-			m_ForceRestart = false;
+			m_ForceRestart = false;//*/
 		}
 	}
-	
+
 	private void Restart()
 	{
 		m_CurrentWidth = Snap(m_Width);
 		m_CurrentHeight = Snap(m_Height);
 		
-		Vector2 newPos = Vector2.zero;
-		newPos.x = -(Snap(transform.position.x) - transform.position.x);
-		newPos.y = -(Snap(transform.position.y) - transform.position.y);
-		m_SnappedTransform.localPosition = new Vector3(newPos.x, newPos.y);
+		Vector2 newPos = new Vector2(Snap(transform.position.x), Snap(transform.position.y));
+		m_SnappedTransform.position = new Vector3(newPos.x, newPos.y);
 
 		if (m_ForceRestart)
 			m_Platform.ForceRestart();
@@ -105,7 +122,7 @@ public class Platform : MonoBehaviour
 			m_WhitePlatforms[i].SetSize(m_CurrentHeight, m_CurrentWidth);
 		
 		m_Collider.size = new Vector2(m_CurrentWidth, m_CurrentHeight);
-		m_Collider.center = new Vector2(m_CurrentWidth / 2f, -m_CurrentHeight / 2f) + newPos;
+		m_Collider.center = new Vector2(m_CurrentWidth / 2f, -m_CurrentHeight / 2f) + new Vector2(m_SnappedTransform.localPosition.x, m_SnappedTransform.localPosition.y);
 		
 		SetActiveColor(m_Color);
 	}
